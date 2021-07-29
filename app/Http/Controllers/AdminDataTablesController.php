@@ -20,11 +20,8 @@ class AdminDataTablesController extends Controller
 
         public function showData(Request $request){
 
-            // $usersAllData=DB::table('users')->join('documents','users.id','=','documents.user_id')->where('role','=',2)->get();
 
-
-            $usersAllData=User::with('qualification')->where('role', '=', 2);
-            // $usersAllData1=User::with('qualification')->where('role', '=', 2)->get();
+            $usersAllData=User::with('qualification')->where('role','=','2');
 
             if ($request->trade_name)
             $usersAllData->where('tradeName', '=', $request->trade_name);
@@ -41,23 +38,43 @@ class AdminDataTablesController extends Controller
             if ($request->date_to)
             $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
 
+            if($request->filter_examination_name){
 
-            // if ($request->filter_examination_name){
-            //                 if($request->filter_examination_name == 'plus two'){
-            //                     $usersAllData=User::with('qualification')->where('id', '=', 'user_id')->get();
-            //                     return $usersAllData;
-            //                 }
+                $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+                $myArray=[];
+                    foreach($usersAllData1 as $a){
 
-            //     }
+                        $z=$a['user_id'];
+
+                        array_push($myArray,$z);
+
+                        }
+                    $usersAllData->whereIn('id',$myArray);
+
+
+            }
+
+            if($request->filter_mark_percentage){
+
+                $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+                $myArrayPercentage=[];
+                    foreach($usersAllData1 as $a1){
+
+                        $z1=$a1['user_id'];
+
+                        array_push($myArrayPercentage,$z1);
+
+                        }
+                    $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+            }
 
 
 
-                // return $usersAllData->get();
+
             return $usersAllData->paginate(7);
 
-
-        //    $documentsData=DB::table('users')->join('documents','users.id','=','documents.user_id')->where('role','=',2)->get();
-        //     return $documentsData;
 
 
 
@@ -84,6 +101,38 @@ class AdminDataTablesController extends Controller
 
             if ($request->date_to)
             $usersAllDataExport->whereDate('created_at' , '<=' , $request->date_to);
+
+            if($request->filter_examination_name){
+
+                $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+                $myArray=[];
+                    foreach($usersAllData1 as $a){
+
+                        $z=$a['user_id'];
+
+                        array_push($myArray,$z);
+
+                        }
+                    $usersAllDataExport->whereIn('id',$myArray);
+
+
+            }
+
+            if($request->filter_mark_percentage){
+
+                $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+                $myArrayPercentage=[];
+                    foreach($usersAllData1 as $a1){
+
+                        $z1=$a1['user_id'];
+
+                        array_push($myArrayPercentage,$z1);
+
+                        }
+                    $usersAllDataExport->whereIn('id',$myArrayPercentage);
+
+
+            }
 
             return $usersAllDataExport->get();
 

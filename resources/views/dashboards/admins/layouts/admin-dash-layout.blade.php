@@ -229,6 +229,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
     <script src="{{ asset('js/app.js') }}"></script>{{-- vue js --}}
     <!-- jQuery -->
+
     <script src="plugins/jquery/jquery.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
@@ -248,15 +249,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
 <!-- Page specific script -->
+
 <script>
 
- $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+//  $(function () {
+//     $("#example1").DataTable({
+//       "responsive": true, "lengthChange": false, "autoWidth": false,
+//       "buttons": ["copy", "csv", "excel", "pdf", "print"]
+//     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
-  });
+//   });
   </script>
 
 </body>

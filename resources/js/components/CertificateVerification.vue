@@ -34,8 +34,23 @@
 <i class="fas fa-filter fa-fw"></i>
                   </button>
 
-                </div>
+<button type="button" class="btn btn-sm btn-primary float-right mt-3" data-toggle="modal" data-target=".export_students" @click="exportStudents()"> Export Options</button>
 
+                </div>
+<!-- exportModal modal -->
+<div class="modal fade export_students" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+ <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeExport()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <students-export></students-export>
+    </div>
+  </div>
+</div>
+<!--Export modal end-->
                 <!--******************************************************************************-->
               </div>
             </div>
@@ -154,6 +169,13 @@
                  </div>
     </div>
 
+<div class="col-md-2">
+                  <div class="form-group text-center">
+        <label for="category" class="font-weight-bold ">Mark Percentage</label>
+ <input type="number"  max="100" class="form-control " v-model="filter.filter_mark_percentage" placeholder="Marks Percentage">
+                 </div>
+    </div>
+
 
 <!--<div class="col ">
                   <button
@@ -175,8 +197,9 @@
           </div>
 
           <!-- /.card-header -->
-          <div class="card-body table-responsive p-0">
-            <table class="table table-hover text-nowrap">
+          <div class="card-body table-responsive p-0 " >
+
+            <table class="table table-hover text-nowrap"  >
               <thead>
                 <tr>
                   <th>#Id</th>
@@ -704,7 +727,8 @@ errors:{},
         filter_category:"",
         date_from:"",
         date_to:"",
-filter_examination_name:"",
+        filter_examination_name:"",
+        filter_mark_percentage:"",
       },
 
 
@@ -954,7 +978,9 @@ excelExportFields:{
 this.$Progress.start();
       axios
         .post("/TableDataForExcelExport", this.filter)
-        .then((response) => (this.exporExcelUsers = response.data));
+        .then((response) => {this.exporExcelUsers = response.data;
+        bus.$emit("export-details", this.exporExcelUsers);
+        });
 this.$Progress.finish();
     },
 
@@ -981,6 +1007,14 @@ this.loadUsersForExcelExport();
 this.loadUsersForExcelExport();
 
     },
+
+    exportStudents(){
+        bus.$emit("export-table");
+    },
+
+    closeExport(){
+        bus.$emit("close-export");
+    }
   },
 
   created() {
@@ -990,6 +1024,8 @@ this.loadUsersForExcelExport();
     Fire.$on("AfterAction", () => {
       this.loadUsers();
     });
+
+
   },
 };
 </script>

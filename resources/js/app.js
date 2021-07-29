@@ -23,6 +23,9 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 import excel from 'vue-excel-export'
 Vue.use(excel);
 
+window.bus = new Vue();
+export const bus = new Vue();
+
 var VueExpandableImage = require('vue-expandable-image')
 Vue.use(VueExpandableImage);
 
@@ -131,6 +134,11 @@ Vue.component('documents-reupload', require('./components/DocumentsReUpload.vue'
 
 
 Vue.component('admin-dash', require('./components/AdminDash.vue').default);
+
+Vue.component('students-export', require('./components/StudentsExport.vue').default);
+
+
+
 
 
 

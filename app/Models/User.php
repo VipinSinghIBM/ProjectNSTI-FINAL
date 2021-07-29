@@ -68,6 +68,6 @@ class User extends Authenticatable
 
 
 public function qualification(){
-    return $this->hasMany(QualificationDetail::class, 'user_id', 'id');
+    return $this->hasMany(QualificationDetail::class);
 }
 }
