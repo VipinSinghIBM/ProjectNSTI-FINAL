@@ -356,8 +356,8 @@
 
         </div>
 
-
-<button class="btn btn-secondary mt-5 mb-5" @click.prevent="backStep" v-if="step != 1"><i class="far fa-hand-point-left fa-lg"></i> Go Back </button>
+<!--
+<button class="btn btn-secondary mt-5 mb-5" @click.prevent="backStep" v-if="step != 1"><i class="far fa-hand-point-left fa-lg"></i> Go Back </button> -->
 
     <button class="btn btn-primary mt-5 mb-5 " @click.prevent="addNewExperienceForm"> Add ExperienceDetails
     <i class="fas fa-plus-circle"></i>
@@ -480,15 +480,13 @@
 
     </div>
 
-<button class="btn btn-secondary mt-5 mb-5" @click.prevent="backStep" v-if="step != 1"><i class="far fa-hand-point-left fa-lg"></i> Go Back </button>
+<!--
+<button class="btn btn-secondary mt-5 mb-5" @click.prevent="backStep" v-if="step != 1"><i class="far fa-hand-point-left fa-lg"></i> Go Back </button> -->
 
 
     </section>
 
 
-    <!-- <button class="btn btn-secondary  mb-5" @click.prevent="backStep" v-if="step != 1"><i class="far fa-hand-point-left fa-lg"></i> Go Back </button> -->
-
-    <!-- <button class="btn btn-success mt-5 mb-5" @click.prevent="nextStep" v-if="step != totalSteps">Next Step</button> -->
 
     <button class="btn btn-primary mt-5 mb-5 " v-if="step == 4" @click.prevent="finalSubmit">Submit</button>
 
