@@ -32,9 +32,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
  <!-- Preloader -->
  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="/assets/images/web c.png" alt="nstilogo" height="70" width="70">
+    <img class="animation__wobble" src="/assets/images/web c.png" alt="nstilogo" height="70" width="70">
 <p class="font-weight-bold mt-1">Loading...</p>
   </div>
+
+ {{-- <!-- Preloader -->
+ <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div> --}}
 
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -42,21 +47,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item mt-1  ">
-                    <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mt-2 mr-2">
+                    <a class="btn btn-outline-secondary btn-sm rounded-pill" href="#changePasswordModal" data-toggle="modal" data-target="#changePasswordModal">
+                        <i class="fas fa-key fa-fw"></i>{{ __('Change Password') }}
+                    </a>
+                </li>
+
+                <li class="nav-item mt-2">
+                    <a class="btn btn-outline-secondary btn-sm rounded-pill" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
-                       <i class="fa fa-power-off"></i> {{ __('Logout') }}
+                      <i class="fa fa-power-off fa-fw"></i> {{ __('Logout') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" role="button">
+                      <i class="fas fa-expand-arrows-alt mt-2" title="fullscreen"></i>
+                    </a>
+                  </li>
+
+
             </ul>
 
     </nav>
     <!-- /.navbar -->
+    <div id="app">
+        <password-change></password-change>
 
+    </div>
 
 
     <!-- Main Sidebar Container -->
@@ -221,16 +244,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </div>
         <!-- Default to the left -->
-        <center> <strong>Copyright &copy; 2021 <a href="">adit</a>.</strong> All rights reserved.</center>
+        <center> <strong>Copyright &copy; {{ now()->year }} <a href="">&nbsp;A D I T</a>.</strong> All rights reserved.</center>
     </footer>
     </div>
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
-    <script src="{{ asset('js/app.js') }}"></script>{{-- vue js --}}
-    <!-- jQuery -->
+<!-- jQuery -->
 
-    <script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>{{-- vue js --}}
+
 <!-- DataTables  & Plugins -->
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

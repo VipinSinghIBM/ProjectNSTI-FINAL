@@ -13,7 +13,7 @@
               <div class="input-group input-group-sm" style="width: 150px">
                 <!--******************************************************************************-->
                 <div class="col">
-<export-excel
+<!-- <export-excel
     class   = "btn btn-primary btn-sm mb-2 float-right"
     :data   = "exporExcelUsers"
     :fields  ="excelExportFields"
@@ -23,7 +23,10 @@
 
     Export Excel<i class="far fa-file-excel fa-fw"></i>
 
-</export-excel>
+</export-excel> -->
+<button type="button" class="btn btn-sm btn-primary float-right mb-3" data-toggle="modal" data-target=".export_students" @click="exportStudents()"> Export Data <i class="fas fa-file-export fa-fw"></i></button>
+
+
                   <button
                     v-if="search == false"
                     type="button"
@@ -34,7 +37,7 @@
 <i class="fas fa-filter fa-fw"></i>
                   </button>
 
-<button type="button" class="btn btn-sm btn-primary float-right mt-3" data-toggle="modal" data-target=".export_students" @click="exportStudents()"> Export Options</button>
+
 
                 </div>
 <!-- exportModal modal -->
@@ -42,6 +45,7 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
  <div class="modal-header">
+ <h5 class="modal-title">Export Data</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeExport()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -76,8 +80,8 @@
               <b>Filter Data</b>
             </h5>
           </div>
-              <div class="row justify-content-center pl-5">
-                <div class="col-md-2 ">
+              <div class="row justify-content-center pl-5 seven-cols">
+                <div class="col-md-2 pl-1">
                   <div class="form-group text-center">
                     <label class="">Trade Name</label>
                     <select
@@ -148,7 +152,7 @@
         <input class="form-control" type="date"  v-model="filter.date_from">
                  </div>
     </div>
-<div class="col-md-2">
+<div class="col-md-1">
                   <div class="form-group text-center">
         <label for="category" class="font-weight-bold ">Date To</label>
         <input class="form-control" type="date"  v-model="filter.date_to">
@@ -169,10 +173,10 @@
                  </div>
     </div>
 
-<div class="col-md-2">
+<div class="col-md-1">
                   <div class="form-group text-center">
-        <label for="category" class="font-weight-bold ">Mark Percentage</label>
- <input type="number"  max="100" class="form-control " v-model="filter.filter_mark_percentage" placeholder="Marks Percentage">
+        <label for="category" class="font-weight-bold ">Mark %</label>
+ <input type="number"  max="100" min="0" class="form-control " v-model="filter.filter_mark_percentage" placeholder="Marks Percentage">
                  </div>
     </div>
 
@@ -211,6 +215,12 @@
                   <th>View Full Details</th>
                   <th>Certificate <br />Verification Status</th>
                   <th>Documents & <br />Certificates</th>
+
+
+                <th>Application  <br />Form</th>
+
+
+
                 </tr>
               </thead>
               <tbody v-for="user in users.data" :key="user.id">
@@ -277,7 +287,13 @@
                     ></span>
                   </td>
 
-                  <td v-if="user.certificateVerificationStatus >= 2">
+                <td v-if="user.certificateVerificationStatus == 5">
+                    <span class="badge badge-dark"
+                      >Re-Uploaded
+                      <i class="fas fa-redo fa-fw"></i></span>
+                  </td>
+
+                  <td v-if="user.certificateVerificationStatus == 2">
                     <span class="badge badge-danger"
                       >Rejected <i class="far fa-times-circle fa-fw"></i
                     ></span>
@@ -301,6 +317,23 @@
                       <i class="fa fa-eye" title="View Certificates"></i>
                     </button>
                   </td>
+
+                <td>
+                    <button
+                      type="button"
+                      @click="applicationPdfExport(user)"
+                      class="btn btn-outline-secondary btn-sm ml-4"
+                      data-toggle="modal"
+                      data-target="#applicationFormExport"
+                      data-backdrop="static"
+                    >
+                      <i class="fas fa-user-graduate" title="view form"></i>
+                    </button>
+                  </td>
+
+
+
+
                 </tr>
               </tbody>
             </table>
@@ -320,6 +353,24 @@
       </div>
     </div>
 
+<!--APPLICATIONFORMEXPORTMODAL-->
+<div class="modal fade bd-example-modal-lg" id="applicationFormExport" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+     <div class="modal-header">
+        <h5 class="modal-title" id="applicationFormExport">Application Form</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <print-test></print-test>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--APPLICATIONFORMEXPORTMODAL-->
     <!-- Modal main -->
     <div
       class="modal fade"
@@ -399,8 +450,10 @@
       </div>
     </div>
     <!--**********************************************************-->
-
     <!-- ALL DETAILS@APPLICATION FORM-->
+
+    <!--**********************************************************-->
+
     <!-- Modal -->
     <div
       class="modal fade"
@@ -421,9 +474,10 @@
             </h5>
           </div>
           <div class="modal-body">
+
             <table class="table text-nowrap" style="width=100%">
-              <div class="row">
-                <div class="col-md-6 col-sm-6">
+                <div class="row">
+                <div class="col">
                   <tr>
                     <th>Name :</th>
                     <td>{{ user_name | upText }}</td>
@@ -471,7 +525,7 @@
                     <td>{{ user_gender }}</td>
                   </tr>
                 </div>
-                <div class="col-md-6 col-sm-12 border-left">
+                 <div class="col">
                   <tr>
                     <th>Category :</th>
                     <td>{{ user_category }}</td>
@@ -708,9 +762,11 @@
 
 
 <script>
+import printTest from './printTest.vue';
 
 
 export default {
+  components: { printTest },
   data() {
     return {
       exporExcelUsers:[],
@@ -997,6 +1053,7 @@ this.$Progress.finish();
         this.filter.date_from="";
         this.filter.date_to="";
         this.filter.filter_examination_name="";
+this.filter.filter_mark_percentage="";
 
       this.loadUsers();
 this.loadUsersForExcelExport();
@@ -1014,7 +1071,28 @@ this.loadUsersForExcelExport();
 
     closeExport(){
         bus.$emit("close-export");
-    }
+    },
+
+    applicationPdfExport(user){
+        this.userId=user.id;
+        this.user_name = user.name;
+        this.user_email = user.email;
+        this.user_trade = user.tradeName;
+        this.user_itiPassed = user.itiPassed;
+        this.user_diploma = user.isDiplomaHolder;
+this.documents;
+
+
+        bus.$emit("export-applicationForm",
+                    this.userId,
+                    this.user_name,
+                    this.user_email,
+                    this.user_trade,
+                    this.user_itiPassed,
+                    this.user_diploma,
+                    this.documents);
+        // bus.$emit("export-applicationForm", this.userId,);
+        },
   },
 
   created() {
@@ -1031,4 +1109,16 @@ this.loadUsersForExcelExport();
 </script>
 
 <style>
+
+@media (min-width: 1200px) {
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
+}
+/* 14% = 100% (full-width row) divided by 7 */
+
+
 </style>

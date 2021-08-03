@@ -4,6 +4,7 @@
 @section('content')
 
                     <div class="registration-form mt-5">
+
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

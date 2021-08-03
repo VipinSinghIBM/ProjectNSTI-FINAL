@@ -30,6 +30,9 @@ var VueExpandableImage = require('vue-expandable-image')
 Vue.use(VueExpandableImage);
 
 
+
+
+
 window.Swal=Swal;
 const Toast = Swal.mixin({
     toast: true,
@@ -136,6 +139,8 @@ Vue.component('documents-reupload', require('./components/DocumentsReUpload.vue'
 Vue.component('admin-dash', require('./components/AdminDash.vue').default);
 
 Vue.component('students-export', require('./components/StudentsExport.vue').default);
+
+Vue.component('print-test', require('./components/printTest.vue').default);
 
 
 

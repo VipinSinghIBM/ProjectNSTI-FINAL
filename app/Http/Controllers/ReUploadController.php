@@ -29,9 +29,15 @@ class ReUploadController extends Controller
              'doc_title'=>'Candidate Photo',
              'document'=>$filename,
              'reUploadStatus'=>1
-
-
          ]);
+
+
+            // $reChange=User::where('id','=',Auth::user()->id)->first();
+            // if($reChange->certificateVerificationStatus != 5){
+            //         $reChange->certificateVerificationStatus=7;
+            //         $reChange->save();
+            // }
+
         }
 
 

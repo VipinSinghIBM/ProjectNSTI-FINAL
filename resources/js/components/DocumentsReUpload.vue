@@ -404,6 +404,11 @@ onChangeaadharF(e){
                                     confirmButtonText: 'Yes, Submit it!'
                                     }).then((result) => {
                                     if (result.isConfirmed) {
+
+                                        axios.post('/changeReupRemarks').then(function(){
+
+                                                });
+
                                         Swal.fire(
                                         'Submitted!',
                                         'Your Form has been submitted successfully.',

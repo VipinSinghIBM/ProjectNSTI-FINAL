@@ -718,7 +718,7 @@ experiences:[
                             title: 'Candidate Photo Uploaded Successfully',
                         });
 
-
+                    // this.$refs[d.id][0].className += " hide";
 
                  });
 
@@ -939,7 +939,9 @@ onChangeaadharB(e){
 
 
                 if(this.candidatePhoto && this.aadharFront && this.aadharBack){
+                   axios.post('/changeFormStatus').then(function(){
 
+                    });
                 Swal.fire(
                 'Thank You!',
                 'Successfully Submited Form!',

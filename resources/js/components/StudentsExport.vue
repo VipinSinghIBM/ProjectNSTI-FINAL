@@ -1,6 +1,6 @@
 <template>
   <!-- /.card-header -->
-          <div class="card-body table-responsive p-0 ">
+          <div class="card-body table-responsive p-3 ">
             <table class="table table-hover text-nowrap" id="exportTable" >
               <thead>
                 <tr>
@@ -11,31 +11,20 @@
                   <th>Selected Trade</th>
                   <th>Date Of Birth</th>
                   <th>Father's Name</th>
-                  <th>Mother's Name</th>
+                    <th>Mother's Name</th>
+                  <th>ITI Passed</th>
+                  <th>Diploma Holder</th>
                   <th>Gender</th>
                   <th>Category</th>
 
-  <th>#Id</th>
-                  <th>Name</th>
-                  <th>Email ID</th>
-                  <th>Phone Number</th>
-                  <th>Selected Trade</th>
-                  <th>Date Of Birth</th>
-                  <th>Father's Name</th>
-                  <th>Mother's Name</th>
-                  <th>Gender</th>
-                  <th>Category</th>
 
- <th>#Id</th>
-                  <th>Name</th>
-                  <th>Email ID</th>
-                  <th>Phone Number</th>
-                  <th>Selected Trade</th>
-                  <th>Date Of Birth</th>
-                  <th>Father's Name</th>
-                  <th>Mother's Name</th>
-                  <th>Gender</th>
-                  <th>Category</th>
+                  <th>physically Handicapped</th>
+                  <th>Trainee Type</th>
+                  <th>EmployeeCode PEN</th>
+                  <th>AadharNumber</th>
+                  <th>maritalStatus</th>
+                  <th>Address</th>
+
 
                 </tr>
               </thead>
@@ -94,6 +83,8 @@ bus.$on('export-table',function (){
 
 $('#exportTable').dataTable( {
 
+
+
 "data":_this.exportUsers,
     "columns": [
         { "data": "id" },
@@ -104,41 +95,35 @@ $('#exportTable').dataTable( {
         { "data": "dob" },
         { "data": "fatherGuardianName" },
         { "data": "motherName" },
+
+        { "data": "itiPassed" },
+        { "data": "isDiplomaHolder" },
+
         { "data": "gender" },
         { "data": "category" },
 
-  { "data": "id" },
-        { "data": "name" },
-        { "data": "email" },
-        { "data": "phonenumber" },
-        { "data": "tradeName" },
-        { "data": "dob" },
-        { "data": "fatherGuardianName" },
-        { "data": "motherName" },
-        { "data": "gender" },
-        { "data": "category" },
+        { "data": "physicallyHandicapped" },
+        { "data": "traineeType" },
+        { "data": "employeeCodePEN" },
+        { "data": "aadharNumber" },
+        { "data": "maritalStatus" },
+        { "data": "address" },
 
-  { "data": "id" },
-        { "data": "name" },
-        { "data": "email" },
-        { "data": "phonenumber" },
-        { "data": "tradeName" },
-        { "data": "dob" },
-        { "data": "fatherGuardianName" },
-        { "data": "motherName" },
-        { "data": "gender" },
-        { "data": "category" },
     ],
     "autoWidth": false,
  dom: 'Bfrtip',
   pageLength: 5,
 
+
         buttons: [
-            'copy', 'csv', 'excel', 'pdf','print',
+
+            'copy', 'csv', 'excel','print',
             {
+            title: 'NSTI CALICUT STUDENTS DETAILS FOR ADMISSION',
             extend: 'pdfHtml5',
             orientation: 'landscape',
-            pageSize: 'TABLOID' }
+            pageSize: 'TABLOID'
+            }
         ]
 
 });
@@ -148,9 +133,9 @@ $('#exportTable').dataTable( {
 //close
 bus.$on("close-export", function () {
 
-$(document).ready( function () {
+// $(document).ready( function () {
     $('#exportTable').DataTable().destroy();
-} );
+// } );
 
 });
 

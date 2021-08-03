@@ -286,5 +286,24 @@ class ApplicationFormController extends Controller
 
             }
 
+        public function changeStatusFinalSubmit(Request $request){
+
+            $formStatusChange=User::where('id','=',Auth::user()->id)->first();
+            $formStatusChange->formNextStatus=5;
+            $formStatusChange->save();
+
+        }
+
+        public function reUpRemarksChangeBack(){
+            $formStatusChange=User::where('id','=',Auth::user()->id)->first();
+            $formStatusChange->certRemarks=null;
+            $formStatusChange->save();
+
+            //certificate verification status change after re-upload-documents
+            $certStatusChange=User::where('id','=',Auth::user()->id)->first();
+            $certStatusChange->certificateVerificationStatus=5;
+            $certStatusChange->save();
+        }
+
 
 }

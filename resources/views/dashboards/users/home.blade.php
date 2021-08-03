@@ -1,6 +1,8 @@
+
 @extends('layouts.authLayout.app')
 
 @section('content')
+
 
 
 @if (Auth::user()->certRemarks)
@@ -80,6 +82,35 @@
       <li class="list-group-item h6">Documents Upload<a href="{{ route('user.dashboard') }}"><button type="button" class="btn btn-info btn-sm float-right" style="border-radius:23px;" > Fill Form</button></a></span></li>
     </ul>
   </div>
+</div>
+
+@elseif(Auth::user()->formNextStatus ==5)
+
+<div class="container col-md-8">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading font-weight-bold text-center">Well done! <i class="far fa-check-circle fa-lg"></i></h4>
+        <p class="mt-5 text-justify">You are successfully submitted the application form , we will verify the details and inoform you the updations regarding your admission..</p>
+<div class="text-center">
+
+</div>
+        <hr>
+        <p class="mb-0">Please wait for further updates     -NSTI Calicut</p>
+      </div>
+</div>
+
+
+@elseif(Auth::user()->certificateVerificationStatus ==5)
+
+<div class="container col-md-8">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading font-weight-bold text-center">Well done! <i class="far fa-check-circle fa-lg"></i></h4>
+        <p class="mt-5 text-justify">You are successfully Re Uploaded Documents , we will verify the details and inoform you the updations regarding your admission..</p>
+<div class="text-center">
+
+</div>
+        <hr>
+        <p class="mb-0">Please wait for further updates     -NSTI Calicut</p>
+      </div>
 </div>
 
 

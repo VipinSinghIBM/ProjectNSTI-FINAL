@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminDashboardCountController;
 use App\Http\Controllers\AdminDataTablesController;
 use App\Http\Controllers\AppFormController;
 use App\Http\Controllers\ApplicationFormController;
+use App\Http\Controllers\ApplicationFormPdfController;
 use App\Http\Controllers\passwordChangeController;
 use App\Http\Controllers\ReUploadController;
 use App\Http\Controllers\UserController;
@@ -99,6 +100,8 @@ Route::get('getEducation/{id}',[AdminDataTablesController::class,'educationGet']
 Route::get('getExperience/{id}',[AdminDataTablesController::class,'experienceGet']);
 Route::get('getDocs/{id}',[AdminDataTablesController::class,'docsGet']);
 
+Route::get('exportApplication',[ApplicationFormPdfController::class,'getDataPdf']);
+
 Route::get('getDocsForReUpload/{id}',[AdminDataTablesController::class,'docsGetReUpload']);
 
 //admit
@@ -166,6 +169,9 @@ Route::post('postEducations',[ApplicationFormController::class,'postEducations']
 Route::post('upCertPhoto',[ApplicationFormController::class,'upCertPhoto']);
 Route::post('postExperience',[ApplicationFormController::class,'postExperience']);
 
+Route::post('changeFormStatus',[ApplicationFormController::class,'changeStatusFinalSubmit'])->middleware('isUser');
+Route::post('changeReupRemarks',[ApplicationFormController::class,'reUpRemarksChangeBack'])->middleware('isUser');
+
 
 
 //21-06-21FilesUpload
@@ -196,6 +202,8 @@ Route::group(['prefix'=>'user','middleware'=>['isUser' ,'auth','PreventBackHisto
 Route::post('postdoc',[ApplicationFormController::class,'postDoc'])->middleware('isUser');
 
 Route::post('rePostdoc',[ReUploadController::class,'PostDocReUp'])->middleware('isUser');
+
+
 
 
 
