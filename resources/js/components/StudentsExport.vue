@@ -1,7 +1,8 @@
 <template>
   <!-- /.card-header -->
-          <div class="card-body table-responsive p-3 ">
-            <table class="table table-hover text-nowrap" id="exportTable" >
+
+      <div class="card-body table-responsive p-3 ">
+            <table class="table arg table-hover text-nowrap" id="exportTable" >
               <thead>
                 <tr>
                   <th>#Id</th>
@@ -39,9 +40,9 @@
                   <td>{{ user.dob | myDate }}</td>
                 </tr> -->
 
-              </tbody>
-            </table>
-          </div>
+             </tbody>
+</table>
+         </div>
           <!-- /.card-body -->
 </template>
 <script>
@@ -80,6 +81,8 @@ _this.exportUsers=exporExcelUsers;
 });
 
 bus.$on('export-table',function (){
+
+
 
 $('#exportTable').dataTable( {
 
@@ -133,9 +136,10 @@ $('#exportTable').dataTable( {
 //close
 bus.$on("close-export", function () {
 
-// $(document).ready( function () {
+$(document).ready( function () {
     $('#exportTable').DataTable().destroy();
-// } );
+} );
+
 
 });
 

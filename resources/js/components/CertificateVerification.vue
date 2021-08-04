@@ -41,7 +41,7 @@
 
                 </div>
 <!-- exportModal modal -->
-<div class="modal fade export_students" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade export_students" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
  <div class="modal-header">
@@ -50,7 +50,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <students-export></students-export>
+
+<students-export></students-export>
+
+
     </div>
   </div>
 </div>
@@ -1073,35 +1076,42 @@ this.loadUsersForExcelExport();
     closeExport(){
         bus.$emit("close-export");
     },
+//temp-hide-04-08-21
+//     applicationPdfExport(user){
+//         this.userId=user.id;
+//         this.user_name = user.name;
+//         this.user_email = user.email;
+//         this.user_trade = user.tradeName;
+//         this.user_itiPassed = user.itiPassed;
+//         this.user_diploma = user.isDiplomaHolder;
+// this.documents;
 
-    applicationPdfExport(user){
-        this.userId=user.id;
-        this.user_name = user.name;
-        this.user_email = user.email;
-        this.user_trade = user.tradeName;
-        this.user_itiPassed = user.itiPassed;
-        this.user_diploma = user.isDiplomaHolder;
-this.documents;
 
+//         bus.$emit("export-applicationForm",
+//                     this.userId,
+//                     this.user_name,
+//                     this.user_email,
+//                     this.user_trade,
+//                     this.user_itiPassed,
+//                     this.user_diploma,
+//                     this.documents);
+//         // bus.$emit("export-applicationForm", this.userId,);
+//         },
 
-        bus.$emit("export-applicationForm",
-                    this.userId,
-                    this.user_name,
-                    this.user_email,
-                    this.user_trade,
-                    this.user_itiPassed,
-                    this.user_diploma,
-                    this.documents);
-        // bus.$emit("export-applicationForm", this.userId,);
-        },
+//temp-hide-04-08-21
   },
 
   created() {
     this.loadUsers();
     this.loadUsersForExcelExport();
 
+
+
+
+
     Fire.$on("AfterAction", () => {
       this.loadUsers();
+
     });
 
 
@@ -1111,14 +1121,14 @@ this.documents;
 
 <style>
 
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
   .seven-cols .col-md-1,
   .seven-cols .col-sm-1,
   .seven-cols .col-lg-1 {
     width: 14.285714285714285714285714285714%;
     *width: 14.285714285714285714285714285714%;
   }
-}
+}*/
 /* 14% = 100% (full-width row) divided by 7 */
 
 

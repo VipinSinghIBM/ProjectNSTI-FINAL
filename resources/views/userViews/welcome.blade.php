@@ -2,7 +2,9 @@
 
 @section('page-content')
  <!--image slider start-->
-
+ {{-- <marquee width="100%" direction="left" height="20px" style="background-color:red; color:#fff; " class="mb-0">
+   samplesampleassndnwj
+    </marquee> --}}
  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -26,8 +28,6 @@
 </div>
 
 <!--image slider end-->
-
-
 
  <!--about nsti start-->
 
