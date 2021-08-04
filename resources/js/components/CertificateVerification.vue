@@ -216,9 +216,9 @@
                   <th>Certificate <br />Verification Status</th>
                   <th>Documents & <br />Certificates</th>
 
-
-                <th>Application  <br />Form</th>
-
+                <!-- Temp hidden@03-08-2021 -->
+                <!-- <th>Application  <br />Form</th> -->
+                <!-- Temp hidden@03-08-2021 -->
 
 
                 </tr>
@@ -318,7 +318,8 @@
                     </button>
                   </td>
 
-                <td>
+<!-- Temp hidden@03-08-2021 -->
+                <!-- <td>
                     <button
                       type="button"
                       @click="applicationPdfExport(user)"
@@ -329,8 +330,8 @@
                     >
                       <i class="fas fa-user-graduate" title="view form"></i>
                     </button>
-                  </td>
-
+                  </td> -->
+<!-- Temp hidden@03-08-2021 -->
 
 
 

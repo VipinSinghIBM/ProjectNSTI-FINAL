@@ -28,7 +28,12 @@ use GuzzleHttp\Middleware;
 
 Route::get('/','App\Http\Controllers\pagesController@index');
 
-//Route::get('/register','App\Http\Controllers\pagesController@register');
+
+// Route::get('/register','App\Http\Controllers\pagesController@register');
+// Route::post('/register','App\Http\Controllers\Auth\RegisterController@create')->name('register');
+
+// Route::get('/login','App\Http\Controllers\pagesController@login')->name('login');
+
 //Route::get('/login','App\Http\Controllers\pagesController@login');
 
 Route::get('/advanceDiploma','App\Http\Controllers\pagesController@advanceDiploma');
@@ -59,6 +64,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('testReq',[ApplicationFormController::class,'testRequest'])->middleware('isUser');
 Route::get('getDocForReUpload',[ApplicationFormController::class,'getDocReUpload'])->middleware('isUser');
+
 
 //Change password
 Route::post('updatePassword',[passwordChangeController::class,'changePassword']);

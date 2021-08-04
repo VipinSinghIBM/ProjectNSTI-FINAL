@@ -3,9 +3,20 @@
 
 @section('content')
 
+@if (Auth::user()->where('role','=',1))
+
+<div class="container">
+    <div class="card border-success mb-3  mx-auto" style="max-width: 28rem;">
+        <div class="card-header">Admin has been successfully Added</div>
+        <div class="card-body text-success">
+          <h5 class="card-title">Admin Addedd Successfully</h5>
+          <p class="card-text">Please Logout and login with Admin credentials</p>
+        </div>
+      </div>
+</div>
 
 
-@if (Auth::user()->certRemarks)
+@elseif (Auth::user()->certRemarks)
 
 <div class="container">
 
@@ -147,5 +158,6 @@
 </div>
 
 @endif
+
 
 @endsection

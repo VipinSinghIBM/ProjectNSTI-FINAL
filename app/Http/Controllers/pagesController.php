@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class pagesController extends Controller
@@ -56,10 +56,18 @@ class pagesController extends Controller
         return view('userViews.welder');
     }
 
-    public function register(){
-          return view('userViews.register');
-    }
-    public function login(){
-        return view('userViews.login');
-  }
+//     public function register(){
+
+//         $checkAdmin=User::all();
+// if($checkAdmin->isEmpty()){
+// return 'empty';
+// }else{
+
+//     return view('auth.register');
+// }
+
+//     }
+//     public function login(){
+//         return view('auth.login');
+//   }
 }

@@ -30,7 +30,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 {{-- AFTER COMMENTING THIS ,THE CSS STYLE LOAD ISSUE FIXED @ 15/16/2021 1:26PM --}}
 
-
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
 
 
     </head>

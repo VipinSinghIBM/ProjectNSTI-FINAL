@@ -3,7 +3,13 @@
 
 @section('content')
 
-                    <div class="registration-form mt-5">
+@if (session()->has('success'))
+<div class="alert alert-success">
+    {{ session()->get('success') }}
+</div>
+@endif
+
+    <div class="registration-form mt-5">
 
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
