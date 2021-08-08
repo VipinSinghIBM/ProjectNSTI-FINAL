@@ -22,6 +22,7 @@ class AdminDataTablesController extends Controller
 
 
             $usersAllData=User::with('qualification')->where('role','=','2');
+            // ->orderBy('certificateVerificationStatus','ASC')
 
             if ($request->trade_name)
             $usersAllData->where('tradeName', '=', $request->trade_name);
@@ -273,15 +274,127 @@ class AdminDataTablesController extends Controller
         }
 
 
-        public function TableDataForAdmission(){
+        public function TableDataForAdmission(Request $request){
 
-
+            // $usersAllData=User::with('qualification')->where('certificateVerificationStatus', '=', 0)->where('feeVerificationStatus', '=', 1);
             $usersAllData=User::where('certificateVerificationStatus', '=', 0)->where('feeVerificationStatus', '=', 1);
-            return $usersAllData->paginate(1);;
+
+            if ($request->trade_name)
+            $usersAllData->where('tradeName', '=', $request->trade_name);
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+            if($request->filter_examination_name){
+
+                $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+                $myArray=[];
+                    foreach($usersAllData1 as $a){
+
+                        $z=$a['user_id'];
+
+                        array_push($myArray,$z);
+
+                        }
+                    $usersAllData->whereIn('id',$myArray);
 
 
-        //    $documentsData=DB::table('users')->join('documents','users.id','=','documents.user_id')->where('role','=',2)->get();
-        //     return $documentsData;
+            }
+
+            if($request->filter_mark_percentage){
+
+                $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+                $myArrayPercentage=[];
+                    foreach($usersAllData1 as $a1){
+
+                        $z1=$a1['user_id'];
+
+                        array_push($myArrayPercentage,$z1);
+
+                        }
+                    $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+            }
+
+
+
+
+            return $usersAllData->paginate(7);
+
+
+
+
+
+        }
+
+        public function showDataForAdmissionExport(Request $request){
+
+            // $usersAllData=User::with('qualification')->where('certificateVerificationStatus', '=', 0)->where('feeVerificationStatus', '=', 1);
+            $usersAllData=User::where('certificateVerificationStatus', '=', 0)->where('feeVerificationStatus', '=', 1);
+
+            if ($request->trade_name)
+            $usersAllData->where('tradeName', '=', $request->trade_name);
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+            if($request->filter_examination_name){
+
+                $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+                $myArray=[];
+                    foreach($usersAllData1 as $a){
+
+                        $z=$a['user_id'];
+
+                        array_push($myArray,$z);
+
+                        }
+                    $usersAllData->whereIn('id',$myArray);
+
+
+            }
+
+            if($request->filter_mark_percentage){
+
+                $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+                $myArrayPercentage=[];
+                    foreach($usersAllData1 as $a1){
+
+                        $z1=$a1['user_id'];
+
+                        array_push($myArrayPercentage,$z1);
+
+                        }
+                    $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+            }
+
+
+
+
+            return $usersAllData->get();
+
+
 
 
 
@@ -420,38 +533,364 @@ class AdminDataTablesController extends Controller
 
 
         //ADMITTED LIST
-        public function admittedList(){
+        public function admittedList(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1);
-            return $usersAllData->paginate(1);
+            if ($request->trade_name)
+            $usersAllData->where('tradeName', '=', $request->trade_name);
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+            if($request->filter_examination_name){
+
+                $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+                $myArray=[];
+                    foreach($usersAllData1 as $a){
+
+                        $z=$a['user_id'];
+
+                        array_push($myArray,$z);
+
+                        }
+                    $usersAllData->whereIn('id',$myArray);
+
+
+            }
+
+            if($request->filter_mark_percentage){
+
+                $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+                $myArrayPercentage=[];
+                    foreach($usersAllData1 as $a1){
+
+                        $z1=$a1['user_id'];
+
+                        array_push($myArrayPercentage,$z1);
+
+                        }
+                    $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+            }
+
+
+
+            return $usersAllData->paginate(7);
+
+
+        }
+
+        public function admittedStudentsExport(Request $request){
+
+
+            $usersAllData=User::where('AdmissionStatus', '=', 1);
+            if ($request->trade_name)
+            $usersAllData->where('tradeName', '=', $request->trade_name);
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+            if($request->filter_examination_name){
+
+                $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+                $myArray=[];
+                    foreach($usersAllData1 as $a){
+
+                        $z=$a['user_id'];
+
+                        array_push($myArray,$z);
+
+                        }
+                    $usersAllData->whereIn('id',$myArray);
+
+
+            }
+
+            if($request->filter_mark_percentage){
+
+                $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+                $myArrayPercentage=[];
+                    foreach($usersAllData1 as $a1){
+
+                        $z1=$a1['user_id'];
+
+                        array_push($myArrayPercentage,$z1);
+
+                        }
+                    $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+            }
+
+
+
+            return $usersAllData->get();
+
 
         }
 
         //WAITING LIST
-        public function waiting(){
+        public function waiting(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 3);
-            return $usersAllData->paginate(1);
+            if ($request->trade_name)
+            $usersAllData->where('tradeName', '=', $request->trade_name);
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+            if($request->filter_examination_name){
+
+                $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+                $myArray=[];
+                    foreach($usersAllData1 as $a){
+
+                        $z=$a['user_id'];
+
+                        array_push($myArray,$z);
+
+                        }
+                    $usersAllData->whereIn('id',$myArray);
+
+
+            }
+
+            if($request->filter_mark_percentage){
+
+                $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+                $myArrayPercentage=[];
+                    foreach($usersAllData1 as $a1){
+
+                        $z1=$a1['user_id'];
+
+                        array_push($myArrayPercentage,$z1);
+
+                        }
+                    $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+            }
+
+
+
+            return $usersAllData->paginate(7);
 
         }
 
+   //WAITING LIST-export
+   public function waitingListForExport(Request $request){
+
+
+    $usersAllData=User::where('AdmissionStatus', '=', 3);
+    if ($request->trade_name)
+    $usersAllData->where('tradeName', '=', $request->trade_name);
+
+    if ($request->filter_gender)
+    $usersAllData->where('gender', '=', $request->filter_gender);
+
+    if ($request->filter_category)
+    $usersAllData->where('category', '=', $request->filter_category);
+
+    if ($request->date_from)
+    $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+    if ($request->date_to)
+    $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+    if($request->filter_examination_name){
+
+        $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+        $myArray=[];
+            foreach($usersAllData1 as $a){
+
+                $z=$a['user_id'];
+
+                array_push($myArray,$z);
+
+                }
+            $usersAllData->whereIn('id',$myArray);
+
+
+    }
+
+    if($request->filter_mark_percentage){
+
+        $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+        $myArrayPercentage=[];
+            foreach($usersAllData1 as $a1){
+
+                $z1=$a1['user_id'];
+
+                array_push($myArrayPercentage,$z1);
+
+                }
+            $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+    }
+
+
+
+    return $usersAllData->get();
+
+}
+
         //Rejected LIST
-        public function rejectListShow(){
+        public function rejectListShow(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 2);
-            return $usersAllData->paginate(1);
+            if ($request->trade_name)
+            $usersAllData->where('tradeName', '=', $request->trade_name);
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+            if($request->filter_examination_name){
+
+                $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+                $myArray=[];
+                    foreach($usersAllData1 as $a){
+
+                        $z=$a['user_id'];
+
+                        array_push($myArray,$z);
+
+                        }
+                    $usersAllData->whereIn('id',$myArray);
+
+
+            }
+
+            if($request->filter_mark_percentage){
+
+                $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+                $myArrayPercentage=[];
+                    foreach($usersAllData1 as $a1){
+
+                        $z1=$a1['user_id'];
+
+                        array_push($myArrayPercentage,$z1);
+
+                        }
+                    $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+            }
+
+
+
+            return $usersAllData->paginate(7);
 
         }
+
+//Rejected LIST-export
+public function rejectedListForExport(Request $request){
+
+
+    $usersAllData=User::where('AdmissionStatus', '=', 2);
+    if ($request->trade_name)
+    $usersAllData->where('tradeName', '=', $request->trade_name);
+
+    if ($request->filter_gender)
+    $usersAllData->where('gender', '=', $request->filter_gender);
+
+    if ($request->filter_category)
+    $usersAllData->where('category', '=', $request->filter_category);
+
+    if ($request->date_from)
+    $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+    if ($request->date_to)
+    $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+    if($request->filter_examination_name){
+
+        $usersAllData1=QualificationDetail::where('nameOfExamination','=',$request->filter_examination_name)->get();
+        $myArray=[];
+            foreach($usersAllData1 as $a){
+
+                $z=$a['user_id'];
+
+                array_push($myArray,$z);
+
+                }
+            $usersAllData->whereIn('id',$myArray);
+
+
+    }
+
+    if($request->filter_mark_percentage){
+
+        $usersAllData1=QualificationDetail::where('percentageOfMarks','>=',$request->filter_mark_percentage)->get();
+        $myArrayPercentage=[];
+            foreach($usersAllData1 as $a1){
+
+                $z1=$a1['user_id'];
+
+                array_push($myArrayPercentage,$z1);
+
+                }
+            $usersAllData->whereIn('id',$myArrayPercentage);
+
+
+    }
+
+
+
+    return $usersAllData->get();
+
+}
 
         //Admitted LIST-ADIT
         public function aditAdmittedList(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','ADIT');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','ADIT');
+
+            return $usersAllData->paginate(7);
+
+
+
 
         }
 

@@ -19,6 +19,7 @@
 <div class="form-group">
         <label for="trade name" class="font-weight-bold ">Select Trade</label>
  <select class="form-control"  v-model="form.tradeName" >
+<option disabled value="">Please select Trade</option>
              <option value="CITS-Mechanic RAC">CITS-Mechanic Refrigeration and Air Conditioning</option>
              <option value="CITS-Electrician & Wireman">CITS-Electrician & Wireman</option>
 <option value="CITS-Electronic Mechanic">CITS-Electronic Mechanic</option>
@@ -37,7 +38,7 @@
 <div class="form-group">
         <label for="itiPassed" class="font-weight-bold">Whether ITI Passed</label>
         <select class="form-control "  v-model="form.itiPassed" >
-
+<option disabled value="">Please select Whether ITI Passed</option>
              <option value="Yes">Yes</option>
              <option value="No">No</option>
          </select>
@@ -47,7 +48,7 @@
 <div class="form-group">
     <label for="diploma" class="font-weight-bold">Is Diploma Holder</label>
         <select class="form-control"  v-model="form.isDiplomaHolder" >
-
+<option disabled value="">Please select Is Diploma Holder</option>
              <option value="Yes">Yes</option>
              <option value="No">No</option>
          </select>
@@ -79,7 +80,7 @@
 <div class="form-group">
     <label for="Gender" class="font-weight-bold">Gender</label>
         <select class="form-control "  v-model="form.gender" >
-
+<option disabled value="">Please select Gender</option>
              <option value="Female">Female</option>
              <option value="Male">Male</option>
              <option value="Others">Others</option>
@@ -90,7 +91,7 @@
 <div class="form-group">
  <label for="category" class="font-weight-bold ">Category</label>
         <select class="form-control "  v-model="form.category" >
-
+<option disabled value="">Please select Category</option>
                 <option value="General">General</option>
                 <option value="OBC">OBC</option>
                 <option value="SC">SC</option>
@@ -109,7 +110,7 @@
 <div class="form-group">
           <label for="physicalyHandicap" class="font-weight-bold ">Physically Handicap</label>
         <select class="form-control  "  v-model="form.physicallyHandicapped" >
-
+<option disabled value="">Please select Phycically Handicap </option>
                <option value="Yes">Yes</option>
                 <option value="No">No</option>
          </select>
@@ -119,7 +120,7 @@
 <div class="form-group">
     <label for="traineeType" class="font-weight-bold">Trainee Type</label>
         <select class="form-control"  v-model="form.traineeType" >
-
+<option disabled value="">Please select Trainee Type</option>
                 <option value="Sponsored">Sponsored</option>
                 <option value="Private">Private</option>
          </select>
@@ -144,7 +145,7 @@
         <label for="maritalStatus" class="font-weight-bold ">Marital Status</label>
         <select class="form-control"  v-model="form.maritalStatus" >
 
-
+<option disabled value="">Please select Marital Status</option>
                 <option value="Single">Single</option>
                 <option value="Married">Married</option>
                 <option value="Widowed">Widowed</option>
@@ -234,6 +235,7 @@
 
                     <label for="duration" class="font-weight-bold ">Duration</label>
                     <select  class="form-control mb-3 " v-model="education.duration" required>
+<option disabled value="">Please select one</option>
                         <option value="1 Year">1 Year</option>
                         <option value="2 Year">2 Year</option>
                         <option value="3 Year">3 Year</option>
@@ -245,7 +247,7 @@
 
                     <label for="tech/aca" class="font-weight-bold ">Technical / Academic</label>
                       <select  class="form-control mb-3" v-model="education.technicalOrAcademic" required>
-
+<option disabled value="">Please select one</option>
                         <option value="Technical">Technical</option>
                         <option value="Academic">Academic</option>
                       </select>
@@ -390,9 +392,8 @@
 <div class="input-group">
 <input type="file" class="form-control" @change="onChange" name="candidatePhoto" id="candidatePhoto" >
 <button type="button" class="btn btn-dark btn-default" @click.prevent="upCandPhoto"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
-
 </div>
-
+<small class="text-danger" v-if="errors.candidatePhoto">{{ errors.candidatePhoto[0] }}</small>
 <img v-bind:src="imagePreview" width="80" height="80" v-show="showPreview" class="mt-2"/>
 
 <div class="input-group mt-3">
@@ -403,7 +404,7 @@
 <button type="button" class="btn btn-dark btn-default" @click.prevent="upAadharPhotoB"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
 
 </div>
-
+<small class="text-danger" v-if="errors.aadharBack">{{ errors.aadharBack[0] }}</small>
 <img v-bind:src="imagePreviewAadharB" width="80" height="80" v-show="showPreviewAadharB" class="mt-2"/>
 
 
@@ -420,7 +421,7 @@
 <button type="button" class="btn btn-dark btn-default" @click.prevent="upAadharPhotoF"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
 
 </div>
-
+<small class="text-danger" v-if="errors.aadharFront">{{ errors.aadharFront[0] }}</small>
 <img v-bind:src="imagePreviewAadharF" width="80" height="80" v-show="showPreviewAadharF" class="mt-2"/>
 
 
@@ -452,6 +453,7 @@
                   <i class="fas fa-cloud-upload-alt"></i> Upload
                 </button>
               </div>
+<small class="text-danger" v-if="errors.certificate">{{ errors.certificate[0] }}</small>
             </div>
           </div>
 </div>
@@ -512,6 +514,9 @@ QualificationExamNames:{},
 users:{},
 errors:[],
  tradeName:'',
+
+
+checkingFinalSubmit:'',
 
 imagePreview: null,
 showPreview: false,
@@ -617,11 +622,9 @@ experiences:[
       this.docName = d.nameOfExamination;
       this.docfile = this.$refs[d.nameOfExamination][0].files[0];
 
-
-
       if (this.docUserId != "" && this.docName != "" && this.docfile != "") {
 
-
+let _this=this;
         let uploadImage = new FormData();
         uploadImage.append("userId", this.docUserId);
         uploadImage.append("docName", this.docName);
@@ -631,7 +634,7 @@ experiences:[
           if (response.data == "success") {
             Toast.fire({
               icon: "success",
-              title: "image added",
+              title: "Certificate Uploaded",
             });
 
        this.docUserId = '';
@@ -647,10 +650,14 @@ experiences:[
           if (response.data == "already Uploaded") {
             Toast.fire({
               icon: "error",
-              title: "image already added",
+              title: "Certificate already added",
             });
           }
-        });
+
+_this.clear_error_data();
+        }).catch((error)=>{
+                        this.errors=error.response.data.errors;
+                    });
       }
     },
 
@@ -703,68 +710,107 @@ experiences:[
 
         upCandPhoto(){
                 // let valCheckA =this.valueCheckOne=false;
-
+                let _this=this;
                  let uploadImage=new FormData();
                  uploadImage.append('candidatePhoto',this.candidatePhoto);
 
-                 axios.post('/uploadCandidatePhoto',uploadImage).then(function(){
+                 axios.post('/uploadCandidatePhoto',uploadImage).then(function(response){
                 //  valCheckA=true;
+                    if (response.data == "already Uploaded") {
+                                Toast.fire({
+                                icon: "error",
+                                title: "Candidate Photo already added",
+                                });
+                            }
 
-                        console.log('candidate Photo Uploaded');
-                    Toast.fire({
-                            icon: 'success',
-                            title: 'Candidate Photo Uploaded Successfully',
-                        });
-
+if (response.data == "success") {
+            Toast.fire({
+              icon: "success",
+              title: "Candidate Photo Uploaded",
+            });
+}
+                    //     console.log('candidate Photo Uploaded');
+                    // Toast.fire({
+                    //         icon: 'success',
+                    //         title: 'Candidate Photo Uploaded Successfully',
+                    //     });
+_this.clear_error_data();
                     // this.$refs[d.id][0].className += " hide";
 
-                 });
+                 }).catch((error)=>{
+                        this.errors=error.response.data.errors;
+                    });
 
 
             },
 
 
  upAadharPhotoF(){
-
+let _this=this;
 // let valCheckB =this.valueCheckOne=false;
                  let uploadImage=new FormData();
                  uploadImage.append('aadharFront',this.aadharFront);
 
-                 axios.post('/uploadaadharFrontPhoto',uploadImage).then(function(){
+                 axios.post('/uploadaadharFrontPhoto',uploadImage).then(function(response){
 //  valCheckB=true;
+ if (response.data == "already Uploaded") {
+                                Toast.fire({
+                                icon: "error",
+                                title: "Aadhar Front Side already Uploaded",
+                                });
+                            }
 
-                        console.log('aadhar Front Photo Uploaded');
-                    Toast.fire({
-                            icon: 'success',
-                            title: 'Aadhar Front Side Uploaded Successfully',
-                        });
+if (response.data == "success") {
+            Toast.fire({
+              icon: "success",
+              title: "Aadhar Front Side Uploaded Successfully",
+            });
+}
+                    //     console.log('aadhar Front Photo Uploaded');
+                    // Toast.fire({
+                    //         icon: 'success',
+                    //         title: 'Aadhar Front Side Uploaded Successfully',
+                    //     });
+
+_this.clear_error_data();
 
 
-
-                 });
+                 }).catch((error)=>{
+                        this.errors=error.response.data.errors;
+                    });
 
 
             },
 
  upAadharPhotoB(){
-
+let _this=this;
 // let valCheckC =this.valueCheckOne=false;
                  let uploadImage=new FormData();
 
                  uploadImage.append('aadharBack',this.aadharBack);
 
 
-                 axios.post('/uploadaadharBackPhoto',uploadImage).then(function(){
+                 axios.post('/uploadaadharBackPhoto',uploadImage).then(function(response){
 // valCheckC=true;
-                        console.log('aadhar back side  Photo Uploaded');
-                    Toast.fire({
-                            icon: 'success',
-                            title: 'Aadhar Back Side Uploaded Successfully',
-                        });
+                       if (response.data == "already Uploaded") {
+                                Toast.fire({
+                                icon: "error",
+                                title: "Aadhar Back Side already Uploaded",
+                                });
+                            }
+
+                    if (response.data == "success") {
+                                Toast.fire({
+                                icon: "success",
+                                title: "Aadhar Back Side Uploaded Successfully",
+                                });
+                    }
+_this.clear_error_data();
 
 
-
-                 });
+                 }).catch((error)=>{
+                        this.errors=error.response.data.errors;
+                    });
 
 
             },
@@ -933,10 +979,13 @@ onChangeaadharB(e){
             },
 
         finalSubmit:function(){
+let _this=this;
+            axios.post('/checkFinalValues').then(function(response){
 
+                   _this.checkingFinalSubmit=response.data;
+console.log(_this.checkingFinalSubmit);
 
-
-                if(this.candidatePhoto && this.aadharFront && this.aadharBack){
+  if(_this.checkingFinalSubmit == 'ok'){
                    axios.post('/changeFormStatus').then(function(){
 
                     });
@@ -951,14 +1000,19 @@ onChangeaadharB(e){
                         window.location = "/home";
                 });
 
-
-                }else{
+            }else{
                 Swal.fire(
                 'Empty Fields!',
                 'Please Upload Your Documents!',
                 'warning'
                 )
                 }
+
+
+
+                                });
+
+
 
 
         },

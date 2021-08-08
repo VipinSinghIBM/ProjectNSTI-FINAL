@@ -13,7 +13,7 @@
               <div class="input-group input-group-sm" style="width: 150px">
                 <!--******************************************************************************-->
                 <div class="col">
-<!-- <export-excel
+                  <!-- <export-excel
     class   = "btn btn-primary btn-sm mb-2 float-right"
     :data   = "exporExcelUsers"
     :fields  ="excelExportFields"
@@ -24,8 +24,15 @@
     Export Excel<i class="far fa-file-excel fa-fw"></i>
 
 </export-excel> -->
-<button type="button" class="btn btn-sm btn-primary float-right mb-3" data-toggle="modal" data-target=".export_students" @click="exportStudents()"> Export Data <i class="fas fa-file-export fa-fw"></i></button>
-
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-primary float-right mb-3"
+                    data-toggle="modal"
+                    data-target=".export_students"
+                    @click="exportStudents()"
+                  >
+                    Export Data <i class="fas fa-file-export fa-fw"></i>
+                  </button>
 
                   <button
                     v-if="search == false"
@@ -34,157 +41,188 @@
                     @click="viewFilters()"
                   >
                     Add Filters
-<i class="fas fa-filter fa-fw"></i>
+                    <i class="fas fa-filter fa-fw"></i>
                   </button>
-
-
-
                 </div>
-<!-- exportModal modal -->
-<div class="modal fade export_students" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
- <div class="modal-header">
- <h5 class="modal-title">Export Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeExport()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+                <!-- exportModal modal -->
+                <div
+                  class="modal fade export_students"
+                  tabindex="-1"
+                  role="dialog"
+                  data-backdrop="static"
+                  aria-labelledby="myLargeModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Export Data</h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                          @click="closeExport()"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
 
-<students-export></students-export>
-
-
-    </div>
-  </div>
-</div>
-<!--Export modal end-->
+                      <students-export></students-export>
+                    </div>
+                  </div>
+                </div>
+                <!--Export modal end-->
                 <!--******************************************************************************-->
               </div>
             </div>
           </div>
-        <div class="" v-if="search">
-          <div  class="col">
-<div class="float-right">
- <button
-                    class="btn btn-outline-info btn-sm mb-2 mr-2 rounded-pill"
-                    @click="getFilteredData()"
+          <div class="" v-if="search">
+            <div class="col">
+              <div class="float-right">
+                <button
+                  class="btn btn-outline-info btn-sm mb-2 mr-2 rounded-pill"
+                  @click="getFilteredData()"
+                >
+                  Filter <i class="fas fa-filter fa-fw"></i>
+                </button>
+
+                <button
+                  class="btn btn-info btn-sm mr-2 mb-2 rounded-pill"
+                  @click="hideFilter()"
+                >
+                  Clear <i class="far fa-times-circle fa-fw"></i>
+                </button>
+              </div>
+              <h5 class="text-center mt-2 text-muted pl-5">
+                <b>Filter Data</b>
+              </h5>
+            </div>
+            <div class="row justify-content-center pl-5 seven-cols">
+              <div class="col-md-2 pl-1">
+                <div class="form-group text-center">
+                  <label class="">Trade Name</label>
+                  <select
+                    class="form-control"
+                    v-model="filter.trade_name"
+                    name="trade_name"
                   >
-                    Filter <i class="fas fa-filter fa-fw"></i>
-                  </button>
+                    <option disabled value="">Select Trade Name</option>
+                    <option value="CITS-Mechanic RAC">
+                      CITS-Mechanic Refrigeration and Air Conditioning
+                    </option>
+                    <option value="CITS-Electrician & Wireman">
+                      CITS-Electrician & Wireman
+                    </option>
+                    <option value="CITS-Electronic Mechanic">
+                      CITS-Electronic Mechanic
+                    </option>
+                    <option value="CITS-Welder">CITS-Welder</option>
+                    <option value="CITS-RODA">
+                      CITS-Reading Of Drawing and Arithmetic (RODA)
+                    </option>
+                    <option value="CTS-Solar Technician">
+                      CTS-Solar Technician(Electrical)
+                    </option>
+                    <option value="CTS-IOT">
+                      CTS-IoT TECHNICIAN (SMART HEALTHCARE)
+                    </option>
+                    <option value="CTS-Electrician Power Distribution">
+                      CTS-Electrician – Power Distribution
+                    </option>
+                    <option value="ADIT">
+                      Advanced Diploma in IT Networking and Cloud Computing
+                    </option>
+                  </select>
+                </div>
+              </div>
 
-                  <button
-                    class="btn btn-info btn-sm mr-2 mb-2 rounded-pill"
-                    @click="hideFilter()"
+              <div class="col-md-2">
+                <div class="form-group text-center">
+                  <label for="Gender" class="font-weight-bold">Gender</label>
+                  <select class="form-control" v-model="filter.filter_gender">
+                    <option disabled value="">Select Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold"
+                    >Category</label
                   >
-                    Clear <i class="far fa-times-circle fa-fw"></i>
-                  </button>
-</div>
-            <h5 class="text-center mt-2 text-muted pl-5">
-              <b>Filter Data</b>
-            </h5>
-          </div>
-              <div class="row justify-content-center pl-5 seven-cols">
-                <div class="col-md-2 pl-1">
-                  <div class="form-group text-center">
-                    <label class="">Trade Name</label>
-                    <select
-                      class="form-control"
-                      v-model="filter.trade_name"
-                      name="trade_name"
-                    >
-                      <option disabled value="">Select Trade Name</option>
-                      <option value="CITS-Mechanic RAC">
-                        CITS-Mechanic Refrigeration and Air Conditioning
-                      </option>
-                      <option value="CITS-Electrician & Wireman">
-                        CITS-Electrician & Wireman
-                      </option>
-                      <option value="CITS-Electronic Mechanic">
-                        CITS-Electronic Mechanic
-                      </option>
-                      <option value="CITS-Welder">CITS-Welder</option>
-                      <option value="CITS-RODA">
-                        CITS-Reading Of Drawing and Arithmetic (RODA)
-                      </option>
-                      <option value="CTS-Solar Technician">
-                        CTS-Solar Technician(Electrical)
-                      </option>
-                      <option value="CTS-IOT">
-                        CTS-IoT TECHNICIAN (SMART HEALTHCARE)
-                      </option>
-                      <option value="CTS-Electrician Power Distribution">
-                        CTS-Electrician – Power Distribution
-                      </option>
-                      <option value="ADIT">
-                        Advanced Diploma in IT Networking and Cloud Computing
-                      </option>
-                    </select>
+                  <select class="form-control" v-model="filter.filter_category">
+                    <option disabled value="">Select Category</option>
+                    <option value="General">General</option>
+                    <option value="OBC">OBC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                  </select>
+                </div>
+              </div>
 
-                  </div></div>
+              <div class="col-md-2">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold"
+                    >Date From</label
+                  >
+                  <input
+                    class="form-control"
+                    type="date"
+                    v-model="filter.date_from"
+                  />
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold">Date To</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    v-model="filter.date_to"
+                  />
+                </div>
+              </div>
 
+              <div class="col-md-2">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold"
+                    >Qualification</label
+                  >
+                  <select
+                    class="form-control"
+                    v-model="filter.filter_examination_name"
+                  >
+                    <option disabled value="">
+                      Select Name Of Examination
+                    </option>
+                    <option value="sslc">SSLC</option>
+                    <option value="plus two">Plus Two</option>
+                    <option value="iti">ITI</option>
+                    <option value="Degree">Degree</option>
+                    <option value="Diploma">Diploma</option>
+                  </select>
+                </div>
+              </div>
 
- <div class="col-md-2">
-                  <div class="form-group text-center">
-                   <label for="Gender" class="font-weight-bold ">Gender</label>
-        <select class="form-control "  v-model="filter.filter_gender" >
-             <option disabled value="">Select Gender</option>
-             <option value="Female">Female</option>
-             <option value="Male">Male</option>
-             <option value="Others">Others</option>
-         </select>
-                 </div>
-    </div>
+              <div class="col-md-1">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold">Mark %</label>
+                  <input
+                    type="number"
+                    max="100"
+                    min="0"
+                    class="form-control"
+                    v-model="filter.filter_mark_percentage"
+                    placeholder="Marks Percentage"
+                  />
+                </div>
+              </div>
 
-
- <div class="col-md-2">
-                  <div class="form-group text-center">
-        <label for="category" class="font-weight-bold ">Category</label>
-        <select class="form-control " v-model="filter.filter_category">
-            <option disabled value="">Select Category</option>
-                <option value="General">General</option>
-                <option value="OBC">OBC</option>
-                <option value="SC">SC</option>
-                <option value="ST">ST</option>
-         </select>
-                 </div>
-    </div>
-
- <div class="col-md-2">
-                  <div class="form-group text-center">
-        <label for="category" class="font-weight-bold ">Date From</label>
-        <input class="form-control" type="date"  v-model="filter.date_from">
-                 </div>
-    </div>
-<div class="col-md-1">
-                  <div class="form-group text-center">
-        <label for="category" class="font-weight-bold ">Date To</label>
-        <input class="form-control" type="date"  v-model="filter.date_to">
-                 </div>
-    </div>
-
-<div class="col-md-2">
-                  <div class="form-group text-center">
-        <label for="category" class="font-weight-bold ">Qualification</label>
- <select class="form-control "   v-model="filter.filter_examination_name">
-             <option disabled value="">Select Name Of Examination</option>
-             <option value="sslc">SSLC</option>
-             <option value="plus two">Plus Two</option>
-             <option value="iti">ITI</option>
-             <option value="Degree">Degree</option>
-             <option value="Diploma">Diploma</option>
-         </select>
-                 </div>
-    </div>
-
-<div class="col-md-1">
-                  <div class="form-group text-center">
-        <label for="category" class="font-weight-bold ">Mark %</label>
- <input type="number"  max="100" min="0" class="form-control " v-model="filter.filter_mark_percentage" placeholder="Marks Percentage">
-                 </div>
-    </div>
-
-
-<!--<div class="col ">
+              <!--<div class="col ">
                   <button
                     class="btn btn-primary btn-sm mb-3 mr-2 float-right"
                     @click="getFilteredData()"
@@ -199,14 +237,12 @@
                     Clear
                   </button>
         </div>-->
-
             </div>
           </div>
 
           <!-- /.card-header -->
-          <div class="card-body table-responsive p-0 " >
-
-            <table class="table table-hover text-nowrap"  >
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
               <thead>
                 <tr>
                   <th>#Id</th>
@@ -219,11 +255,9 @@
                   <th>Certificate <br />Verification Status</th>
                   <th>Documents & <br />Certificates</th>
 
-                <!-- Temp hidden@03-08-2021 -->
-                <!-- <th>Application  <br />Form</th> -->
-                <!-- Temp hidden@03-08-2021 -->
-
-
+                  <!-- Temp hidden@03-08-2021 -->
+                  <!-- <th>Application  <br />Form</th> -->
+                  <!-- Temp hidden@03-08-2021 -->
                 </tr>
               </thead>
               <tbody v-for="user in users.data" :key="user.id">
@@ -290,10 +324,10 @@
                     ></span>
                   </td>
 
-                <td v-if="user.certificateVerificationStatus == 5">
+                  <td v-if="user.certificateVerificationStatus == 5">
                     <span class="badge badge-dark"
-                      >Re-Uploaded
-                      <i class="fas fa-redo fa-fw"></i></span>
+                      >Re-Uploaded <i class="fas fa-redo fa-fw"></i
+                    ></span>
                   </td>
 
                   <td v-if="user.certificateVerificationStatus == 2">
@@ -321,8 +355,8 @@
                     </button>
                   </td>
 
-<!-- Temp hidden@03-08-2021 -->
-                <!-- <td>
+                  <!-- Temp hidden@03-08-2021 -->
+                  <!-- <td>
                     <button
                       type="button"
                       @click="applicationPdfExport(user)"
@@ -334,10 +368,7 @@
                       <i class="fas fa-user-graduate" title="view form"></i>
                     </button>
                   </td> -->
-<!-- Temp hidden@03-08-2021 -->
-
-
-
+                  <!-- Temp hidden@03-08-2021 -->
                 </tr>
               </tbody>
             </table>
@@ -357,24 +388,38 @@
       </div>
     </div>
 
-<!--APPLICATIONFORMEXPORTMODAL-->
-<div class="modal fade bd-example-modal-lg" id="applicationFormExport" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-     <div class="modal-header">
-        <h5 class="modal-title" id="applicationFormExport">Application Form</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <print-test></print-test>
+    <!--APPLICATIONFORMEXPORTMODAL-->
+    <div
+      class="modal fade bd-example-modal-lg"
+      id="applicationFormExport"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="applicationFormExport">
+              Application Form
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <print-test></print-test>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!--APPLICATIONFORMEXPORTMODAL-->
+    <!--APPLICATIONFORMEXPORTMODAL-->
     <!-- Modal main -->
     <div
       class="modal fade"
@@ -406,6 +451,8 @@
                 v-for="document in documents"
                 :key="document.id"
               >
+                <!--<div v-if="document.docRejectionRemarks"> {{ documents.docRejectionRemarks }} </div>-->
+
                 <div class="img" style="max-width: 180px">
                   <h5 v-if="document.reUploadStatus == 1">
                     Re Uploaded {{ document.doc_title }}
@@ -478,9 +525,8 @@
             </h5>
           </div>
           <div class="modal-body">
-
             <table class="table text-nowrap" style="width=100%">
-                <div class="row">
+              <div class="row">
                 <div class="col">
                   <tr>
                     <th>Name :</th>
@@ -529,7 +575,7 @@
                     <td>{{ user_gender }}</td>
                   </tr>
                 </div>
-                 <div class="col">
+                <div class="col">
                   <tr>
                     <th>Category :</th>
                     <td>{{ user_category }}</td>
@@ -766,32 +812,29 @@
 
 
 <script>
-import printTest from './printTest.vue';
-
+import printTest from "./printTest.vue";
 
 export default {
   components: { printTest },
   data() {
     return {
-      exporExcelUsers:[],
+      exporExcelUsers: [],
       users: {},
       documents: {},
       educations: {},
       experiences: {},
-errors:{},
+      errors: {},
 
       search: false,
       filter: {
         trade_name: "",
-        filter_gender:"",
-        filter_category:"",
-        date_from:"",
-        date_to:"",
-        filter_examination_name:"",
-        filter_mark_percentage:"",
+        filter_gender: "",
+        filter_category: "",
+        date_from: "",
+        date_to: "",
+        filter_examination_name: "",
+        filter_mark_percentage: "",
       },
-
-
 
       doc_title: "",
 
@@ -820,31 +863,28 @@ errors:{},
       expandedImage: "",
       expandedImageTitle: "",
 
-excelExportFields:{
-        'ID':'id',
-        'Username':'username',
-        'Name':'name',
-        'Email':'email',
-        'Phone Number':'phonenumber',
-        'Trade Name':'tradeName',
-        'Whether ITI Passed':'itiPassed',
-        'Is Diploma Holder':'isDiplomaHolder',
-        'Date Of Birth':'dob',
-        'Father/Spouse/Guardian Name':'fatherGuardianName',
-        'Mothers Name':'motherName',
-        'Gender':'gender',
-        'Category':'category',
-        'Physically Handicap':'physicallyHandicapped',
-        'Trainee Type':'traineeType',
-        'Employee Code(PEN)':'employeeCodePEN',
-        'Aadhar Number':'aadharNumber',
-        'Marital Status':'maritalStatus',
-        'Address':'address',
-
-        },
+      excelExportFields: {
+        ID: "id",
+        Username: "username",
+        Name: "name",
+        Email: "email",
+        "Phone Number": "phonenumber",
+        "Trade Name": "tradeName",
+        "Whether ITI Passed": "itiPassed",
+        "Is Diploma Holder": "isDiplomaHolder",
+        "Date Of Birth": "dob",
+        "Father/Spouse/Guardian Name": "fatherGuardianName",
+        "Mothers Name": "motherName",
+        Gender: "gender",
+        Category: "category",
+        "Physically Handicap": "physicallyHandicapped",
+        "Trainee Type": "traineeType",
+        "Employee Code(PEN)": "employeeCodePEN",
+        "Aadhar Number": "aadharNumber",
+        "Marital Status": "maritalStatus",
+        Address: "address",
+      },
     };
-
-
   },
 
   methods: {
@@ -1033,17 +1073,16 @@ excelExportFields:{
         .then((response) => (this.users = response.data));
     },
 
-   //get table data for export excel function
+    //get table data for export excel function
     loadUsersForExcelExport() {
-this.$Progress.start();
-      axios
-        .post("/TableDataForExcelExport", this.filter)
-        .then((response) => {this.exporExcelUsers = response.data;
-        bus.$emit("export-details", this.exporExcelUsers);
-        });
-this.$Progress.finish();
-    },
+      this.$Progress.start();
 
+      axios.post("/TableDataForExcelExport", this.filter).then((response) => {
+        this.exporExcelUsers = response.data;
+        bus.$emit("export-details", this.exporExcelUsers);
+      });
+      this.$Progress.finish();
+    },
 
     viewFilters() {
       this.search = true;
@@ -1051,76 +1090,66 @@ this.$Progress.finish();
     hideFilter() {
       this.search = false;
       this.filter.trade_name = "";
-        this.filter.filter_gender="";
-        this.filter.filter_category="";
-        this.filter.date_of_birth="";
-        this.filter.date_from="";
-        this.filter.date_to="";
-        this.filter.filter_examination_name="";
-this.filter.filter_mark_percentage="";
+      this.filter.filter_gender = "";
+      this.filter.filter_category = "";
+      this.filter.date_of_birth = "";
+      this.filter.date_from = "";
+      this.filter.date_to = "";
+      this.filter.filter_examination_name = "";
+      this.filter.filter_mark_percentage = "";
 
       this.loadUsers();
-this.loadUsersForExcelExport();
+      this.loadUsersForExcelExport();
     },
 
     getFilteredData() {
       this.loadUsers();
-this.loadUsersForExcelExport();
-
+      this.loadUsersForExcelExport();
     },
 
-    exportStudents(){
-        bus.$emit("export-table");
+    exportStudents() {
+      bus.$emit("export-table");
     },
 
-    closeExport(){
-        bus.$emit("close-export");
+    closeExport() {
+      bus.$emit("close-export");
     },
-//temp-hide-04-08-21
-//     applicationPdfExport(user){
-//         this.userId=user.id;
-//         this.user_name = user.name;
-//         this.user_email = user.email;
-//         this.user_trade = user.tradeName;
-//         this.user_itiPassed = user.itiPassed;
-//         this.user_diploma = user.isDiplomaHolder;
-// this.documents;
+    //temp-hide-04-08-21
+    //     applicationPdfExport(user){
+    //         this.userId=user.id;
+    //         this.user_name = user.name;
+    //         this.user_email = user.email;
+    //         this.user_trade = user.tradeName;
+    //         this.user_itiPassed = user.itiPassed;
+    //         this.user_diploma = user.isDiplomaHolder;
+    // this.documents;
 
+    //         bus.$emit("export-applicationForm",
+    //                     this.userId,
+    //                     this.user_name,
+    //                     this.user_email,
+    //                     this.user_trade,
+    //                     this.user_itiPassed,
+    //                     this.user_diploma,
+    //                     this.documents);
+    //         // bus.$emit("export-applicationForm", this.userId,);
+    //         },
 
-//         bus.$emit("export-applicationForm",
-//                     this.userId,
-//                     this.user_name,
-//                     this.user_email,
-//                     this.user_trade,
-//                     this.user_itiPassed,
-//                     this.user_diploma,
-//                     this.documents);
-//         // bus.$emit("export-applicationForm", this.userId,);
-//         },
-
-//temp-hide-04-08-21
+    //temp-hide-04-08-21
   },
 
   created() {
     this.loadUsers();
     this.loadUsersForExcelExport();
 
-
-
-
-
     Fire.$on("AfterAction", () => {
       this.loadUsers();
-
     });
-
-
   },
 };
 </script>
 
 <style>
-
 /*@media (min-width: 1200px) {
   .seven-cols .col-md-1,
   .seven-cols .col-sm-1,
@@ -1130,6 +1159,4 @@ this.loadUsersForExcelExport();
   }
 }*/
 /* 14% = 100% (full-width row) divided by 7 */
-
-
 </style>

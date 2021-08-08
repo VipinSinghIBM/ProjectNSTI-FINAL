@@ -70,19 +70,14 @@ _this.exportUsers=[];
 bus.$on("export-details", function (exporExcelUsers) {
 
 
-
 _this.exportUsers=exporExcelUsers;
-
-
-
-
 
 
 });
 
 bus.$on('export-table',function (){
 
-
+ $('#exportTable').DataTable().destroy();//for fix in data table alert error
 
 $('#exportTable').dataTable( {
 
@@ -136,10 +131,9 @@ $('#exportTable').dataTable( {
 //close
 bus.$on("close-export", function () {
 
-$(document).ready( function () {
-    $('#exportTable').DataTable().destroy();
-} );
-
+    $(document).ready( function () {
+        $('#exportTable').DataTable().destroy();
+    } );
 
 });
 

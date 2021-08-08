@@ -35,9 +35,47 @@
       <div class="row">
         <div class="col-md-8 col-sm-6 col-xs-12">
           <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
-       <a href="#">Team CREATORS</a>.
+       <a href="#" data-toggle="modal" data-target="#">Team CREATORS</a>.
           </p>
+
         </div>
+
+{{-- <!-- Modal -->
+<div class="modal fade" id="myTeamA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-muted" id="exampleModalLabel">Meet Our Team - <span class="font-weight-bold">C R E A T O R S</span> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+
+<div id="app">
+    <our-team></our-team>
+</div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<style>
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+</style> --}}
+
 
         <div class="col-md-4 col-sm-6 col-xs-12">
           <ul class="social-icons">
@@ -52,6 +90,8 @@
 </footer>
 
 <!--footer end-->
+<!-- Scripts -->
+{{-- <script src="{{ asset('js/app.js') }}" ></script>  vue js --}}
 <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -72,10 +112,14 @@
 
   <!-- jQuery -->
 
+
   <script src="./assets/js/jquery-3.3.1.min.js"></script>
   <script src="./assets/js/popper.min.js"></script>
   <script src="./assets/js/jquery.filterizr.min.js"></script>
   <script src="./assets/js/script.js"></script>
 
   <script>
+
+
+
 </body>

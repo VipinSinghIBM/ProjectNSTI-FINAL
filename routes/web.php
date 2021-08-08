@@ -117,13 +117,15 @@ Route::post('rejectStudents/{id}',[AdminDataTablesController::class,'reject'])->
 //waiting
 Route::post('addWaiting/{id}',[AdminDataTablesController::class,'waitingList'])->middleware('isAdmin');
 
-//admittedList
-Route::get('admittedStudents',[AdminDataTablesController::class,'admittedList'])->middleware('isAdmin');
+//admittedList-main
+Route::post('admittedStudents',[AdminDataTablesController::class,'admittedList'])->middleware('isAdmin');
 //WaitingList
-Route::get('waitingListStudents',[AdminDataTablesController::class,'waiting'])->middleware('isAdmin');
+Route::post('waitingListStudents',[AdminDataTablesController::class,'waiting'])->middleware('isAdmin');
+Route::post('TableDataWaitingListForExport',[AdminDataTablesController::class,'waitingListForExport'])->middleware('isAdmin');
 
 //RekjectedList
-Route::get('rejectedStudents',[AdminDataTablesController::class,'rejectListShow'])->middleware('isAdmin');
+Route::post('rejectedStudents',[AdminDataTablesController::class,'rejectListShow'])->middleware('isAdmin');
+Route::post('TableDataRejectedListForExport',[AdminDataTablesController::class,'rejectedListForExport'])->middleware('isAdmin');
 
 //Adit Admitted
 Route::get('aditAdmitted',[AdminDataTablesController::class,'aditAdmittedList'])->middleware('isAdmin');
@@ -159,7 +161,10 @@ Route::post('TableDataForExcelExport',[AdminDataTablesController::class,'showDat
 Route::post('certVerify/{id}',[AdminDataTablesController::class,'certVerify'])->middleware('isAdmin');
 Route::post('certReject/{id}',[AdminDataTablesController::class,'certReject'])->middleware('isAdmin');
 
-Route::get('TableDataAdmission',[AdminDataTablesController::class,'TableDataForAdmission'])->middleware('isAdmin');
+Route::post('TableDataAdmission',[AdminDataTablesController::class,'TableDataForAdmission'])->middleware('isAdmin');
+Route::post('TableDataAdmissionForExport',[AdminDataTablesController::class,'showDataForAdmissionExport'])->middleware('isAdmin');
+
+Route::post('TableDataAdmittedForExport',[AdminDataTablesController::class,'admittedStudentsExport'])->middleware('isAdmin');
 
 
 
@@ -175,6 +180,7 @@ Route::post('postEducations',[ApplicationFormController::class,'postEducations']
 Route::post('upCertPhoto',[ApplicationFormController::class,'upCertPhoto']);
 Route::post('postExperience',[ApplicationFormController::class,'postExperience']);
 
+Route::post('checkFinalValues',[ApplicationFormController::class,'checkValuesFinalSubmit'])->middleware('isUser');
 Route::post('changeFormStatus',[ApplicationFormController::class,'changeStatusFinalSubmit'])->middleware('isUser');
 Route::post('changeReupRemarks',[ApplicationFormController::class,'reUpRemarksChangeBack'])->middleware('isUser');
 

@@ -3,7 +3,9 @@
 
 @section('content')
 
-@if (Auth::user()->where('role','=',1))
+@if (Auth::user()->role == 1);
+
+
 
 <div class="container">
     <div class="card border-success mb-3  mx-auto" style="max-width: 28rem;">
@@ -26,7 +28,7 @@
 <p class="font-weight-bold font-italic mt-3">{{ Auth::user()->certRemarks }}</p>
         <p>Please Re Upload your Documents and please check you cleared the above rejection reaseons before proceeding. </p>
         <hr>
-        <p class="mb-0">Click here to Upload the Documents<a href="" style="text-decoration:none; color:#8D5024;"> <i class="fas fa-upload "></i> </a></p>
+        {{-- <p class="mb-0">Click here to Upload the Documents<a href="" style="text-decoration:none; color:#8D5024;"> <i class="fas fa-upload "></i> </a></p> --}}
         {{-- <button type="button" class="close" data-dismiss="alert">&times;</button> --}}
     </div>
 

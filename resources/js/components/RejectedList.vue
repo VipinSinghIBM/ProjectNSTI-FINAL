@@ -11,16 +11,214 @@
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                      <div class="col">
+   <button
+                    type="button"
+                    class="btn btn-sm btn-primary float-right mb-3"
+                    data-toggle="modal"
+                    data-target=".export_students"
+                    @click="exportStudents()"
+                  >
+                    Export Data <i class="fas fa-file-export fa-fw"></i>
+                  </button>
 
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
+                  <button
+                    v-if="search == false"
+                    type="button"
+                    class="btn btn-sm btn-primary float-right"
+                    @click="viewFilters()"
+                  >
+                    Add Filters
+                    <i class="fas fa-filter fa-fw"></i>
+                  </button>
+                </div>
+
+ <!-- exportModal modal -->
+                <div
+                  class="modal fade export_students"
+                  tabindex="-1"
+                  role="dialog"
+                  data-backdrop="static"
+                  aria-labelledby="myLargeModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Export Data</h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                          @click="closeExport()"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
+                      <students-export></students-export>
                     </div>
                   </div>
                 </div>
+                <!--Export modal end-->
+                <!--******************************************************************************-->
               </div>
+            </div>
+          </div>
+          <div class="" v-if="search">
+            <div class="col">
+              <div class="float-right">
+                <button
+                  class="btn btn-outline-info btn-sm mb-2 mr-2 rounded-pill"
+                  @click="getFilteredData()"
+                >
+                  Filter <i class="fas fa-filter fa-fw"></i>
+                </button>
+
+                <button
+                  class="btn btn-info btn-sm mr-2 mb-2 rounded-pill"
+                  @click="hideFilter()"
+                >
+                  Clear <i class="far fa-times-circle fa-fw"></i>
+                </button>
+              </div>
+              <h5 class="text-center mt-2 text-muted pl-5">
+                <b>Filter Data</b>
+              </h5>
+            </div>
+            <div class="row justify-content-center pl-5 seven-cols">
+              <div class="col-md-2 pl-1">
+                <div class="form-group text-center">
+                  <label class="">Trade Name</label>
+                  <select
+                    class="form-control"
+                    v-model="filter.trade_name"
+                    name="trade_name"
+                  >
+                    <option disabled value="">Select Trade Name</option>
+                    <option value="CITS-Mechanic RAC">
+                      CITS-Mechanic Refrigeration and Air Conditioning
+                    </option>
+                    <option value="CITS-Electrician & Wireman">
+                      CITS-Electrician & Wireman
+                    </option>
+                    <option value="CITS-Electronic Mechanic">
+                      CITS-Electronic Mechanic
+                    </option>
+                    <option value="CITS-Welder">CITS-Welder</option>
+                    <option value="CITS-RODA">
+                      CITS-Reading Of Drawing and Arithmetic (RODA)
+                    </option>
+                    <option value="CTS-Solar Technician">
+                      CTS-Solar Technician(Electrical)
+                    </option>
+                    <option value="CTS-IOT">
+                      CTS-IoT TECHNICIAN (SMART HEALTHCARE)
+                    </option>
+                    <option value="CTS-Electrician Power Distribution">
+                      CTS-Electrician – Power Distribution
+                    </option>
+                    <option value="ADIT">
+                      Advanced Diploma in IT Networking and Cloud Computing
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group text-center">
+                  <label for="Gender" class="font-weight-bold">Gender</label>
+                  <select class="form-control" v-model="filter.filter_gender">
+                    <option disabled value="">Select Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold"
+                    >Category</label
+                  >
+                  <select class="form-control" v-model="filter.filter_category">
+                    <option disabled value="">Select Category</option>
+                    <option value="General">General</option>
+                    <option value="OBC">OBC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold"
+                    >Date From</label
+                  >
+                  <input
+                    class="form-control"
+                    type="date"
+                    v-model="filter.date_from"
+                  />
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold">Date To</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    v-model="filter.date_to"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold"
+                    >Qualification</label
+                  >
+                  <select
+                    class="form-control"
+                    v-model="filter.filter_examination_name"
+                  >
+                    <option disabled value="">
+                      Select Name Of Examination
+                    </option>
+                    <option value="sslc">SSLC</option>
+                    <option value="plus two">Plus Two</option>
+                    <option value="iti">ITI</option>
+                    <option value="Degree">Degree</option>
+                    <option value="Diploma">Diploma</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-1">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold">Mark %</label>
+                  <input
+                    type="number"
+                    max="100"
+                    min="0"
+                    class="form-control"
+                    v-model="filter.filter_mark_percentage"
+                    placeholder="Marks Percentage"
+                  />
+                </div>
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -424,7 +622,17 @@ export default {
      educations:{},
      experiences:{},
 
-
+search: false,
+   filter: {
+        trade_name: "",
+        filter_gender: "",
+        filter_category: "",
+        date_from: "",
+        date_to: "",
+        filter_examination_name: "",
+        filter_mark_percentage: "",
+      },
+ exporExcelUsers: [],
 
 doc_title:'',
 
@@ -535,15 +743,61 @@ this.user_address=user.address;
 
     //get table data function
     loadUsers(page = 1){
-        axios.get("/rejectedStudents?page=" + page,).then((data)=>(this.users=data.data));
+        axios.post("/rejectedStudents?page=" + page,this.filter).then((data)=>(this.users=data.data));
     },
+
+//get table data for export  function
+    loadUsersForExcelExport() {
+      this.$Progress.start();
+
+      axios.post("/TableDataRejectedListForExport", this.filter).then((data) => {
+        this.exporExcelUsers = data.data;
+        bus.$emit("export-details", this.exporExcelUsers);
+      });
+      this.$Progress.finish();
+    },
+
+
+exportStudents() {
+      bus.$emit("export-table");
+    },
+
+ closeExport() {
+      bus.$emit("close-export");
+    },
+
+ viewFilters() {
+      this.search = true;
+    },
+
+ getFilteredData() {
+      this.loadUsers();
+this.loadUsersForExcelExport();
+    },
+
+    hideFilter() {
+      this.search = false;
+      this.filter.trade_name = "";
+      this.filter.filter_gender = "";
+      this.filter.filter_category = "";
+      this.filter.date_of_birth = "";
+      this.filter.date_from = "";
+      this.filter.date_to = "";
+      this.filter.filter_examination_name = "";
+      this.filter.filter_mark_percentage = "";
+
+      this.loadUsers();
+this.loadUsersForExcelExport();
+
+    },
+
 
 
   },
 
   created() {
 
-
+this.loadUsersForExcelExport();
     this.loadUsers();
 
     Fire.$on('AfterAction',()=>{

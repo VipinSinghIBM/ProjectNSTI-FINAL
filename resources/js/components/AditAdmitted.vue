@@ -37,7 +37,7 @@
 
                     </tr>
                     </thead>
-                <tbody v-for="user in users" :key="user.id">
+                <tbody v-for="user in users.data" :key="user.id">
                     <tr>
                     <td>{{user.id}}</td>
                       <td>{{user.name | upText}}</td>
@@ -81,7 +81,17 @@
                 </table>
               </div>
               <!-- /.card-body -->
+<div class="card-footer align-right">
+      <pagination
+        :data="users"
+        align="right"
+        @pagination-change-page="loadUsers"
+      >
+
+    </pagination>
+    </div>
             </div>
+
             <!-- /.card -->
           </div>
         </div>
@@ -563,8 +573,8 @@ this.user_address=user.address;
 
 
     //get table data function
-    loadUsers(){
-        axios.get("/aditAdmitted").then((data)=>(this.users=data.data));
+    loadUsers(page =1){
+        axios.get("/aditAdmitted?page="+page,).then((data)=>(this.users=data.data));
     },
 
 

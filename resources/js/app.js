@@ -140,6 +140,10 @@ Vue.component('admin-dash', require('./components/AdminDash.vue').default);
 
 Vue.component('students-export', require('./components/StudentsExport.vue').default);
 
+Vue.component('our-team', require('./components/OurTeam.vue').default);
+
+
+
 Vue.component('print-test', require('./components/printTest.vue').default);
 
 

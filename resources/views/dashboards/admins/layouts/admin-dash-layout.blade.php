@@ -79,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div id="app">
         <password-change></password-change>
 
-    </div>
+
 
 
     <!-- Main Sidebar Container -->
@@ -244,11 +244,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </div>
         <!-- Default to the left -->
-        <center> <strong>Copyright &copy; {{ now()->year }} <a href="">&nbsp;A D I T</a>.</strong> All rights reserved.</center>
+        <center> <strong>Copyright &copy; {{ now()->year }} <a href="#arg" data-toggle="modal" data-target="#arg">&nbsp;A D I T</a>.</strong> All rights reserved.</center>
     </footer>
     </div>
-    <!-- ./wrapper -->
 
+<!-- Modal -->
+<div class="modal fade" id="arg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-muted" id="exampleModalLabel">Meet Our Team - <span class="font-weight-bold">C R E A T O R S</span> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+
+
+<our-team></our-team>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- ./wrapper -->
+</div>
     <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 

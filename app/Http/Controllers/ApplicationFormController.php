@@ -7,8 +7,7 @@ use App\Models\User;
 use App\Models\QualificationDetail;
 use App\Models\ExperienceDetail;
 use App\Models\documents;
-
-
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Database\Schema\ForeignKeyDefinition;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -82,8 +81,15 @@ class ApplicationFormController extends Controller
         public function upCPhoto(Request $request){
 
                 $request->validate([
-                   'candidatePhoto'=>'required|image|mimes:jpeg,png,jpg|max:1024',
+                   'candidatePhoto'=>'required|image|mimes:jpeg,png,jpg|max:200',
                 ]);
+
+                $check=documents::where([['doc_title','Candidate Photo'],['user_id','=',Auth::user()->id]])->first();
+
+                if($check){
+
+                return 'already Uploaded';
+                }
 
                 if($request->hasFile('candidatePhoto')) {
                     $img_ext = $request->file('candidatePhoto')->getClientOriginalExtension();
@@ -95,11 +101,11 @@ class ApplicationFormController extends Controller
                 'doc_title'=>'Candidate Photo',
                 'document'=>$filename,
 
-
-            //    $uploaded='document'=>$request->file('candidatePhoto')->move(public_path('uploads'),Str::uuid().'_'.$request->file('candidatePhoto')->getClientOriginalExtension()),
-
-
             ]);
+
+if($user){
+return 'success';
+}
 
 
 
@@ -108,8 +114,15 @@ class ApplicationFormController extends Controller
         public function upAadharF(Request $request){
 
             $request->validate([
-               'aadharFront'=>'required|image|mimes:jpeg,png,jpg|max:1024',
+               'aadharFront'=>'required|image|mimes:jpeg,png,jpg|max:200',
             ]);
+
+            $check=documents::where([['doc_title','Aadhar Front Side'],['user_id','=',Auth::user()->id]])->first();
+
+            if($check){
+
+            return 'already Uploaded';
+            }
 
             if($request->hasFile('aadharFront')) {
                 $img_ext = $request->file('aadharFront')->getClientOriginalExtension();
@@ -125,7 +138,9 @@ class ApplicationFormController extends Controller
         //    $uploaded='document'=>$request->file('aadharFront')->move(public_path('uploads'),Str::uuid().'_'.$request->file('aadharFront')->getClientOriginalExtension()),
         ]);
 
-
+if($user){
+return 'success';
+}
 
     }
 
@@ -133,8 +148,15 @@ class ApplicationFormController extends Controller
     public function upAadharB(Request $request){
 
         $request->validate([
-           'aadharBack'=>'required|image|mimes:jpeg,png,jpg|max:1024',
+           'aadharBack'=>'required|image|mimes:jpeg,png,jpg|max:200',
         ]);
+
+        $check=documents::where([['doc_title','Aadhar Back Side'],['user_id','=',Auth::user()->id]])->first();
+
+        if($check){
+
+        return 'already Uploaded';
+        }
 
         if($request->hasFile('aadharBack')) {
             $img_ext = $request->file('aadharBack')->getClientOriginalExtension();
@@ -146,6 +168,10 @@ class ApplicationFormController extends Controller
         'doc_title'=>'Aadhar Back Side',
         'document'=>$filename,
     ]);
+
+if($user){
+return 'success';
+}
 
 }
 
@@ -214,25 +240,27 @@ class ApplicationFormController extends Controller
             }
 
 
-            public function upCertDocPhoto(Request $request){
+//commented-05-08-2021
+
+        //     public function upCertDocPhoto(Request $request){
 
 
-                // $request->validate([
-                //    'examCertDoc'=>'required|image|mimes:jpeg,png,jpg|max:1024',
-                // ]);
+        //         // $request->validate([
+        //         //    'examCertDoc'=>'required|image|mimes:jpeg,png,jpg|max:1024',
+        //         // ]);
 
-                if($request->hasFile('examCertDoc')) {
-                    $img_ext = $request->file('examCertDoc')->getClientOriginalExtension();
-                    $filename = 'examCertDoc-' . time() . '.' . $img_ext;
-                    $path = $request->file('examCertDoc')->move(public_path('uploads'), $filename);//image save public folder
-                  }
-                    $user = documents::create([
-                        'user_id'=>Auth::user()->id,
-                        'doc_title'=>'examCertDocTest',
-                        'document'=>$filename,
-                    ]);
+        //         if($request->hasFile('examCertDoc')) {
+        //             $img_ext = $request->file('examCertDoc')->getClientOriginalExtension();
+        //             $filename = 'examCertDoc-' . time() . '.' . $img_ext;
+        //             $path = $request->file('examCertDoc')->move(public_path('uploads'), $filename);//image save public folder
+        //           }
+        //             $user = documents::create([
+        //                 'user_id'=>Auth::user()->id,
+        //                 'doc_title'=>'examCertDocTest',
+        //                 'document'=>$filename,
+        //             ]);
 
-        }
+        // }
 
 
 
@@ -254,7 +282,7 @@ class ApplicationFormController extends Controller
             public function postDoc(Request $request){
 
             $request->validate([
-            'certificate'=>'required|image|mimes:jpeg,png,jpg|max:1024',
+            'certificate'=>'required|image|mimes:jpeg,png,jpg|max:200',
             ]);
 
 
@@ -291,6 +319,20 @@ class ApplicationFormController extends Controller
             $formStatusChange=User::where('id','=',Auth::user()->id)->first();
             $formStatusChange->formNextStatus=5;
             $formStatusChange->save();
+
+        }
+
+        public function checkValuesFinalSubmit(){
+            $check=documents::where([['doc_title','=','Aadhar Back Side'],['doc_title','=','Aadhar Front Side'],['user_id','=',Auth::user()->id]
+])->get();
+
+            if($check){
+
+            return 'ok';
+            }
+
+
+
 
         }
 
