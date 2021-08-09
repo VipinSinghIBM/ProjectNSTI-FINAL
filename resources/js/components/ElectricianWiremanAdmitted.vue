@@ -11,17 +11,53 @@
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
+ <button
+                    type="button"
+                    class="btn btn-sm btn-primary float-right mb-3 ml-3"
+                    data-toggle="modal"
+                    data-target=".export_students"
+                    @click="exportStudents()"
+                  >
+                    Export Data <i class="fas fa-file-export fa-fw"></i>
+                  </button>
+
                   </div>
                 </div>
               </div>
               <!-- /.card-header -->
+
+<!-- exportModal modal -->
+                <div
+                  class="modal fade export_students"
+                  tabindex="-1"
+                  role="dialog"
+                  data-backdrop="static"
+                  aria-labelledby="myLargeModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Export Data</h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                          @click="closeExport()"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
+                      <students-export></students-export>
+                    </div>
+                  </div>
+                </div>
+                <!--Export modal end-->
+
+
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                     <thead>
@@ -37,7 +73,7 @@
 
                     </tr>
                     </thead>
-                <tbody v-for="user in users" :key="user.id">
+                <tbody v-for="user in users.data" :key="user.id">
                     <tr>
                     <td>{{user.id}}</td>
                       <td>{{user.name | upText}}</td>
@@ -82,85 +118,99 @@
               </div>
               <!-- /.card-body -->
             </div>
+
+
+ <div class="card-footer align-right">
+      <pagination
+        :data="users"
+        align="right"
+        @pagination-change-page="loadUsers"
+      >
+
+    </pagination>
+    </div>
+
+
             <!-- /.card -->
           </div>
         </div>
+   <!-- Modal main -->
+    <div
+      class="modal fade"
+      id="certificatesView"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="certificatesView"
+      aria-hidden="true"
+        data-backdrop="static"
+    >
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="certificatesView">
+              Certificates Of {{ user_name | upText }}
+            </h5>
+            <button
+              type="button"
+              aria-label="Close"
+              class="close"
+              @click="closeMainModal()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div
+                class="col-lg-3 col-md-3 col-sm-3"
+                v-for="document in documents"
+                :key="document.id"
+              >
+                <!--<div v-if="document.docRejectionRemarks"> {{ documents.docRejectionRemarks }} </div>-->
 
-<!-- Modal main -->
-<div class="modal fade" id="certificatesView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
-  <div class="modal-dialog  modal-xl" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="certificatesView">Documents Of {{  user_name | upText }}</h5>
+                <div class="img" style="max-width: 180px">
+                  <h5 v-if="document.reUploadStatus == 1">
+                    Re Uploaded {{ document.doc_title }}
+                  </h5>
 
-      </div>
-      <div class="modal-body">
+                  <h5 v-if="document.reUploadStatus == null">
+                    {{ document.doc_title }}
+                  </h5>
+                  <expandable-image
+                    :src="/uploads/ + document.document"
+                    class="img-fluid mb-4"
+                    :close-on-background-click="true"
+                  />
+                  <!--data-toggle="modal" data-target="#expandImageModal" alt="doc images" width="200px" height="200px" @click="singleImageExpand(document)"-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              @click="closeMainModal()"
+            >
+              Close
+            </button>
 
-<!--
-<ul v-for="document in documents" :key="document.id">
-
-<li>{{document.doc_title}}</li>
-
-<img :src="/uploads/+document.document" class="img-fluid rounded" data-toggle="modal" data-target="#expandImageModal" alt="doc images" width="200px" height="200px" @click="singleImageExpand(document)">
-
-</ul>-->
-
-<div class="row" >
-
-<div class="col-md-3 col-sm-6" v-for="document in documents" :key="document.id">
-<h5>{{document.doc_title}}</h5>
-<div class="img">
-<img :src="/uploads/+document.document" class="img-fluid rounded" data-toggle="modal" data-target="#expandImageModal" alt="doc images" width="200px" height="200px" @click="singleImageExpand(document)">
-
-</div>
-
-</div>
-
-</div>
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeMainModal()">Close </button>
-
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+    <!--**********************************************************-->
 <!--**********************************************************-->
 
 
-<!-- Modal -->
-<div class="modal  fade fade-scale" id="expandImageModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ expandedImageTitle }}</h5>
-        <button type="button" class="close" aria-label="Close"  @click="closeExpandImage()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <img :src="/uploads/+expandedImage" class="img-responsive"  alt="doc images" style="max-width:100%; max-height:50%;">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="closeExpandImage()">Close</button>
-        <button type="button" class="btn btn-primary">print</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!--**********************************************************-->
 
 
 <!-- ALL DETAILS@APPLICATION FORM-->
 <!-- Modal -->
-<div class="modal fade" id="applicationAllView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
+<div class="modal fade" id="applicationAllView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl " role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -168,13 +218,16 @@
             <span class="text-muted">: <strong>Personal Details</strong> </span>
         </h5>
 
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
 
       </div>
       <div class="modal-body">
 <table class="table text-nowrap " style="width=100%">
 <div class="row ">
 
-<div class="col-md-6 col-sm-6">
+<div class="col">
   <tr>
     <th>Name  :</th>
     <td>{{  user_name | upText }}</td>
@@ -223,7 +276,7 @@
   </tr>
 
 </div>
-<div class="col-md-6 col-sm-12  border-left ">
+<div class="col border-left ">
 
    <tr>
     <th>Category :</th>
@@ -279,19 +332,24 @@
 <!-- Educational Details@ FORM-->
 <!-- Modal -->
 
-<div class="modal fade" id="applicationEducationView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
+<div class="modal fade" id="applicationEducationView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="certificatesView">Application Form Details Of {{  user_name | upText }}
             <span class="text-muted">: <strong>Educational Qualification Details</strong> </span>
         </h5>
+
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" @click="clearModalData()">&times;</span>
+        </button>
+
       </div>
       <div class="modal-body" v-for="education in educations" :key="education.id">
 <table class="table text-nowrap " style="width=100%">
 <div class="row ">
 
-<div class="col-md-6 col-sm-6">
+<div class="col">
   <tr>
     <th>Name Of Examination  :</th>
     <td>{{education.nameOfExamination}}</td>
@@ -311,7 +369,7 @@
 
 
 </div>
-<div class="col-md-6 col-sm-12  border-left ">
+<div class="col border-left ">
 
    <tr>
     <th>Certificate Number :</th>
@@ -352,13 +410,17 @@
 <!-- Educational Details@ FORM-->
 <!-- Modal -->
 
-<div class="modal fade" id="applicationExperienceView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
+<div class="modal fade" id="applicationExperienceView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="certificatesView">Application Form Details Of {{  user_name | upText }}
             <span class="text-muted">: <strong>Experience  Details</strong> </span>
         </h5>
+
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"  @click="clearModalData()">&times;</span>
+        </button>
       </div>
 
 
@@ -441,7 +503,7 @@ export default {
      educations:{},
      experiences:{},
 
-
+exporExcelUsers: [],
 
 doc_title:'',
 
@@ -487,19 +549,6 @@ expandedImageTitle:'',
             },
 
 
-            singleImageExpand(document){
-            this.expandedImage=document.document;
-            this.expandedImageTitle=document.doc_title;
-
-            $('#certificatesView').modal('hide');
-            },
-
-            closeExpandImage(){
-            $('#expandImageModal').modal('hide');
-
-            $('#certificatesView').modal('show');
-
-            },
 
 
             closeMainModal(){
@@ -561,12 +610,27 @@ this.user_address=user.address;
 
       },
 
-
-    //get table data function
-    loadUsers(){
-        axios.get("/ElectricianWiremanAdmittedList").then((data)=>(this.users=data.data));
+exportStudents() {
+      bus.$emit("export-table");
     },
 
+ closeExport() {
+      bus.$emit("close-export");
+    },
+    //get table data function
+    loadUsers(page = 1){
+        axios.get("/ElectricianWiremanAdmittedList?page="+page,).then((data)=>(this.users=data.data));
+    },
+//get table data for export  function
+    loadUsersForExcelExport() {
+      this.$Progress.start();
+
+      axios.get("/ElectricianWiremanForExport").then((data) => {
+        this.exporExcelUsers = data.data;
+        bus.$emit("export-details", this.exporExcelUsers);
+      });
+      this.$Progress.finish();
+    },
 
   },
 
@@ -574,6 +638,7 @@ this.user_address=user.address;
 
 
     this.loadUsers();
+this.loadUsersForExcelExport();
 
     Fire.$on('AfterAction',()=>{
         this.loadUsers();

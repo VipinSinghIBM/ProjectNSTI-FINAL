@@ -893,16 +893,37 @@ public function rejectedListForExport(Request $request){
 
 
         }
+ //Admitted LIST-ADIT-export
+ public function aditAdmittedListExport(){
+
+
+    $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','ADIT');
+
+    return $usersAllData->get();
+
+
+
+
+}
 
 
         //Admitted LIST-R and AC
         public function RandAcAdmittedList(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Mechanic RAC');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Mechanic RAC');
+            return $usersAllData->paginate(6);
 
         }
+
+    //Admitted LIST-R and AC
+    public function RandAcAdmittedListExport(){
+
+
+        $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Mechanic RAC');
+        return $usersAllData->get();
+
+    }
 
 
 
@@ -910,8 +931,16 @@ public function rejectedListForExport(Request $request){
         public function ReadingOfDrawingAdmittedListShow(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-RODA');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-RODA');
+            return $usersAllData->paginate(6);
+
+        }
+        //Admitted LIST-R and AC
+        public function RodaExport(){
+
+
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-RODA');
+            return $usersAllData->get();
 
         }
 
@@ -920,17 +949,33 @@ public function rejectedListForExport(Request $request){
         public function ElectricianWiremanAdmittedListShow(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electrician & Wireman');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electrician & Wireman');
+            return $usersAllData->paginate(6);
+
+        }
+        //Admitted LIST-Electrician and wireman
+        public function ElectricianWiremanForExportList(){
+
+
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electrician & Wireman');
+            return $usersAllData->get();
 
         }
 
-        //Admitted LIST-Electrician and wireman
+        //Admitted LIST-ElectronicMechanic
         public function ElectronicMechanicAdmittedListShow(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electronic Mechanic');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electronic Mechanic');
+            return $usersAllData->paginate(6);
+
+        }
+        //Admitted LIST-ElectronicMechanic-export
+        public function ElectronicMechanicExportList(){
+
+
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electronic Mechanic');
+            return $usersAllData->get();
 
         }
 
@@ -938,26 +983,52 @@ public function rejectedListForExport(Request $request){
         public function WelderAdmittedListShow(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Welder');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Welder');
+            return $usersAllData->paginate(6);
 
         }
+            //Admitted LIST-Electrician and wireman-export
+            public function WelderAdmittedForExportList(){
+
+
+                $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Welder');
+                return $usersAllData->get();
+
+            }
 
         //Admitted LIST-Solar Technician
         public function SolarTechnicianAdmittedList(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Solar Technician');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Solar Technician');
+            return $usersAllData->paginate(6);
+
+        }
+        //Admitted LIST-Solar Technician-export
+        public function SolarTechnicianAdmittedExportList(){
+
+
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Solar Technician');
+            return $usersAllData->get();
 
         }
 
-        //Admitted LIST-Solar Technician
+        //Admitted LIST-IoT
         public function IotAdmittedListShow(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-IOT');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-IOT');
+            return $usersAllData->paginate(6);
+
+        }
+
+
+        //Admitted LIST-IoT-export
+        public function iotAdmittedForExportList(){
+
+
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-IOT');
+            return $usersAllData->get();
 
         }
 
@@ -965,10 +1036,19 @@ public function rejectedListForExport(Request $request){
         public function ElectricianPowerDistributionListShow(){
 
 
-            $usersAllData=User::all()->where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Electrician Power Distribution');
-            return $usersAllData;
+            $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Electrician Power Distribution');
+            return $usersAllData->paginate(6);
 
         }
+
+  //Admitted LIST-Solar Technician-export
+  public function ElectricianPowerDisForExportList(){
+
+
+    $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Electrician Power Distribution');
+    return $usersAllData->get();
+
+}
 
 
 

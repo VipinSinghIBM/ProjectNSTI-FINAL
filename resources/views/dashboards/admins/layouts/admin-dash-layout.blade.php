@@ -236,7 +236,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     </div>
     <!-- /.control-sidebar -->
-
+    <div id="userApp"></div><!--09-08-2021  commented for aviod userApp is not found console error-->
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- To the right -->

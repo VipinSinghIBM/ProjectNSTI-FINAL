@@ -140,6 +140,7 @@ export default {
 
             closeModal(){
                 this.errors=[];
+this.form={};
                 $('#changePasswordModal').hide();
             },
 

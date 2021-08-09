@@ -96,7 +96,28 @@
     </ul>
   </div>
 </div>
+@elseif(Auth::user()->AdmissionStatus == 1)
+<div class="container-fluid ">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ "You Are Successfully Admitted  " .  Auth::user()->name}}</div>
 
+                <div class="card-body mt-5 mb-5 ">
+
+                    <h4 class="alert-heading font-weight-bold text-center text-success">Well done! <i class="far fa-check-circle fa-lg"></i></h4>
+                    <p class="mt-2 text-justify text-center text-success">You are successfully Admitted for the course <b>{{ Auth::user()->tradeName }} </b>.</p>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @elseif(Auth::user()->formNextStatus ==5)
 
 <div class="container col-md-8">
@@ -128,7 +149,7 @@
 
 
 
-@else
+@elseif(Auth::user()->address == null)
 <div class="container-fluid ">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -151,6 +172,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 {{-- @endif --}}
 

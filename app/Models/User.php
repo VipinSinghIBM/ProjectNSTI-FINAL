@@ -40,6 +40,9 @@ class User extends Authenticatable
         'address',
         'certificateVerificationStatus',
         'feeVerificationStatus',
+'AdmissionStatus',
+'certRemarks',
+'formNextStatus',
 
     ];
 

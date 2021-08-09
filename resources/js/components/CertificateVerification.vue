@@ -428,6 +428,7 @@
       role="dialog"
       aria-labelledby="certificatesView"
       aria-hidden="true"
+        data-backdrop="static"
     >
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -513,6 +514,7 @@
       role="dialog"
       aria-labelledby="certificatesView"
       aria-hidden="true"
+        data-backdrop="static"
     >
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -523,6 +525,9 @@
                 >: <strong>Personal Details</strong>
               </span>
             </h5>
+ <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
           </div>
           <div class="modal-body">
             <table class="table text-nowrap" style="width=100%">
@@ -638,6 +643,7 @@
       role="dialog"
       aria-labelledby="certificatesView"
       aria-hidden="true"
+        data-backdrop="static"
     >
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -648,6 +654,9 @@
                 >: <strong>Educational Qualification Details</strong>
               </span>
             </h5>
+ <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" @click="clearModalData()">&times;</span>
+        </button>
           </div>
           <div
             class="modal-body"
@@ -656,7 +665,7 @@
           >
             <table class="table text-nowrap" style="width=100%">
               <div class="row">
-                <div class="col-md-6 col-sm-6">
+                <div class="col">
                   <tr>
                     <th>Name Of Examination :</th>
                     <td>{{ education.nameOfExamination }}</td>
@@ -674,7 +683,7 @@
                     <td>{{ education.yearOfPassing }}</td>
                   </tr>
                 </div>
-                <div class="col-md-6 col-sm-12 border-left">
+                <div class="col border-left">
                   <tr>
                     <th>Certificate Number :</th>
                     <td>{{ education.certificateNumber }}</td>
@@ -730,6 +739,7 @@
       role="dialog"
       aria-labelledby="certificatesView"
       aria-hidden="true"
+    data-backdrop="static"
     >
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -740,6 +750,9 @@
                 >: <strong>Experience Details</strong>
               </span>
             </h5>
+ <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" @click="clearModalData()">&times;</span>
+        </button>
           </div>
 
           <div

@@ -295,7 +295,7 @@
         </div>
 
 <!-- Modal main -->
-<div class="modal fade" id="certificatesView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
+<div class="modal fade" id="certificatesView" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
   <div class="modal-dialog  modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -312,9 +312,19 @@
 <div class="row" >
 
 <div class="col-md-3 col-sm-6" v-for="document in documents" :key="document.id">
-<h5>{{document.doc_title}}</h5>
-<div class="img">
-<expandable-image :src="/uploads/+document.document" alt="doc images" :close-on-background-click = true />
+<div class="img" style="max-width: 180px">
+                  <h5 v-if="document.reUploadStatus == 1">
+                    Re Uploaded {{ document.doc_title }}
+                  </h5>
+
+                  <h5 v-if="document.reUploadStatus == null">
+                    {{ document.doc_title }}
+                  </h5>
+                  <expandable-image
+                    :src="/uploads/ + document.document"
+                    class="img-fluid mb-4"
+                    :close-on-background-click="true"
+                  />
 
 </div>
 
@@ -341,21 +351,23 @@
 
 <!-- ALL DETAILS@APPLICATION FORM-->
 <!-- Modal -->
-<div class="modal fade" id="applicationAllView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
+<div class="modal fade" id="applicationAllView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="certificatesView">Application Form Details Of {{  user_name | upText }}
             <span class="text-muted">: <strong>Personal Details</strong> </span>
         </h5>
-
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
 
       </div>
       <div class="modal-body">
 <table class="table text-nowrap " style="width=100%">
 <div class="row ">
 
-<div class="col-md-6 col-sm-6">
+<div class="col">
   <tr>
     <th>Name  :</th>
     <td>{{  user_name | upText }}</td>
@@ -404,7 +416,7 @@
   </tr>
 
 </div>
-<div class="col-md-6 col-sm-12  border-left ">
+<div class="col  border-left ">
 
    <tr>
     <th>Category :</th>
@@ -460,19 +472,22 @@
 <!-- Educational Details@ FORM-->
 <!-- Modal -->
 
-<div class="modal fade" id="applicationEducationView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
+<div class="modal fade" id="applicationEducationView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="certificatesView">Application Form Details Of {{  user_name | upText }}
             <span class="text-muted">: <strong>Educational Qualification Details</strong> </span>
         </h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" @click="clearModalData()">&times;</span>
+        </button>
       </div>
       <div class="modal-body" v-for="education in educations" :key="education.id">
 <table class="table text-nowrap " style="width=100%">
 <div class="row ">
 
-<div class="col-md-6 col-sm-6">
+<div class="col">
   <tr>
     <th>Name Of Examination  :</th>
     <td>{{education.nameOfExamination}}</td>
@@ -492,7 +507,7 @@
 
 
 </div>
-<div class="col-md-6 col-sm-12  border-left ">
+<div class="col  border-left ">
 
    <tr>
     <th>Certificate Number :</th>
@@ -533,13 +548,16 @@
 <!-- Educational Details@ FORM-->
 <!-- Modal -->
 
-<div class="modal fade" id="applicationExperienceView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true">
+<div class="modal fade" id="applicationExperienceView" tabindex="-1" role="dialog" aria-labelledby="certificatesView" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="certificatesView">Application Form Details Of {{  user_name | upText }}
             <span class="text-muted">: <strong>Experience  Details</strong> </span>
         </h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" @click="clearModalData()">&times;</span>
+        </button>
       </div>
 
 
@@ -548,7 +566,7 @@
 <table class="table text-nowrap " style="width=100%">
 <div class="row ">
 
-<div class="col-md-6 col-sm-6">
+<div class="col">
   <tr>
     <th>Name Of Employer  :</th>
     <td>{{experience.nameOfEmployer}}</td>
@@ -565,7 +583,7 @@
   </tr>
 
 </div>
-<div class="col-md-6 col-sm-12  border-left ">
+<div class="col  border-left ">
 
 <tr>
     <th>From Date  :</th>
