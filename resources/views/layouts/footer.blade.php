@@ -35,7 +35,7 @@
       <div class="row">
         <div class="col-md-8 col-sm-6 col-xs-12">
           <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
-       <a href="#" data-toggle="modal" data-target="#">Team CREATORS</a>.
+       <a href="/team" target="_blank">Team CREATORS</a>.
           </p>
 
         </div>

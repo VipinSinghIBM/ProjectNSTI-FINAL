@@ -16,7 +16,7 @@
          <div class="row">
                 <div class="col-lg-3 col-md-3 col-12  ">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="/assets/images/a (2).png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:80px;">
+                        <img src="/assets/images/a (2).jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Anurag Ck</h4>
                             <small class="text-muted">UI DESIGN & WEB DEVELOPER</small>
@@ -30,7 +30,7 @@
 
                 <div class="col-lg-3 col-md-3 col-12 ">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="/assets/images/a (1).png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:80px;">
+                        <img src="/assets/images/a (1).jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Adwaith Kannan</h4>
                             <small class="text-muted">UI DESIGN & WEB DEVELOPER</small>
@@ -44,7 +44,7 @@
 
                 <div class="col-lg-3 col-md-3 col-12">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt=""  style="width:80px;">
+                        <img src="/assets/images/b (2).jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt=""  style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Manu Dev</h4>
                             <small class="text-muted">UI DESIGN & WEB DEVELOPER</small>
@@ -58,10 +58,10 @@
 
                 <div class="col-lg-3 col-md-3 col-12 ">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:80px;">
+                        <img src="/assets/images/b (3).png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Akhil Das Kp</h4>
-                            <small class="text-muted">AKHIL DAS KP</small>
+                            <small class="text-muted">REQUIREMENT ANALYST</small>
                              <ul class="list-unstyled mt-3 social-icon social mb-0">
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
@@ -74,10 +74,10 @@
        <div class="row">
                 <div class="col-lg-3 col-md-3 col-12  ">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:80px;">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Sanal Kp</h4>
-                            <small class="text-muted">AKHIL DAS KP</small>
+                            <small class="text-muted">REQUIREMENT ANALYST</small>
                              <ul class="list-unstyled mt-3 social-icon social mb-0">
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
@@ -88,7 +88,7 @@
 
                 <div class="col-lg-3 col-md-3 col-12 ">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:80px;">
+                        <img src="/assets/images/b (1).jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Vipin Singh</h4>
                             <small class="text-muted">UI DESIGN & WEB DEVELOPER</small>
@@ -102,7 +102,7 @@
 
                 <div class="col-lg-3 col-md-3 col-12">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt=""  style="width:80px;">
+                        <img src="/assets/images/prav.jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt=""  style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Pravitha Cp</h4>
                             <small class="text-muted">QA AND TESTING</small>
@@ -116,7 +116,7 @@
 
                 <div class="col-lg-3 col-md-3 col-12 ">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:80px;">
+                        <img src="/assets/images/b (4).jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Anumol M</h4>
                             <small class="text-muted">QA AND TESTING</small>
