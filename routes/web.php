@@ -53,6 +53,8 @@ Route::get('/iot','App\Http\Controllers\pagesController@iot');
 
 Route::get('/solar','App\Http\Controllers\pagesController@solar');
 
+Route::get('/team','App\Http\Controllers\pagesController@team');
+
 
 
 
@@ -128,40 +130,40 @@ Route::post('rejectedStudents',[AdminDataTablesController::class,'rejectListShow
 Route::post('TableDataRejectedListForExport',[AdminDataTablesController::class,'rejectedListForExport'])->middleware('isAdmin');
 
 //Adit Admitted
-Route::get('aditAdmitted',[AdminDataTablesController::class,'aditAdmittedList'])->middleware('isAdmin');
-Route::get('aditAdmittedForExport',[AdminDataTablesController::class,'aditAdmittedListExport'])->middleware('isAdmin');
+Route::post('aditAdmitted',[AdminDataTablesController::class,'aditAdmittedList'])->middleware('isAdmin');
+Route::post('aditAdmittedForExport',[AdminDataTablesController::class,'aditAdmittedListExport'])->middleware('isAdmin');
 
 //CITS R and AC Admitted
-Route::get('RandAcAdmitted',[AdminDataTablesController::class,'RandAcAdmittedList'])->middleware('isAdmin');
-Route::get('RandAcAdmittedForExport',[AdminDataTablesController::class,'RandAcAdmittedListExport'])->middleware('isAdmin');
+Route::post('RandAcAdmitted',[AdminDataTablesController::class,'RandAcAdmittedList'])->middleware('isAdmin');
+Route::post('RandAcAdmittedForExport',[AdminDataTablesController::class,'RandAcAdmittedListExport'])->middleware('isAdmin');
 
 //CITS RODA Admitted
-Route::get('ReadingOfDrawingAdmittedList',[AdminDataTablesController::class,'ReadingOfDrawingAdmittedListShow'])->middleware('isAdmin');
-Route::get('RodaForExport',[AdminDataTablesController::class,'RodaExport'])->middleware('isAdmin');
+Route::post('ReadingOfDrawingAdmittedList',[AdminDataTablesController::class,'ReadingOfDrawingAdmittedListShow'])->middleware('isAdmin');
+Route::post('RodaForExport',[AdminDataTablesController::class,'RodaExport'])->middleware('isAdmin');
 
 //CITS elctrician and wireman Admitted
-Route::get('ElectricianWiremanAdmittedList',[AdminDataTablesController::class,'ElectricianWiremanAdmittedListShow'])->middleware('isAdmin');
-Route::get('ElectricianWiremanForExport',[AdminDataTablesController::class,'ElectricianWiremanForExportList'])->middleware('isAdmin');
+Route::post('ElectricianWiremanAdmittedList',[AdminDataTablesController::class,'ElectricianWiremanAdmittedListShow'])->middleware('isAdmin');
+Route::post('ElectricianWiremanForExport',[AdminDataTablesController::class,'ElectricianWiremanForExportList'])->middleware('isAdmin');
 
 //CITS Electronic Mechanic Admitted
-Route::get('ElectronicMechanicAdmittedList',[AdminDataTablesController::class,'ElectronicMechanicAdmittedListShow'])->middleware('isAdmin');
-Route::get('ElectronicMechanicExport',[AdminDataTablesController::class,'ElectronicMechanicExportList'])->middleware('isAdmin');
+Route::post('ElectronicMechanicAdmittedList',[AdminDataTablesController::class,'ElectronicMechanicAdmittedListShow'])->middleware('isAdmin');
+Route::post('ElectronicMechanicExport',[AdminDataTablesController::class,'ElectronicMechanicExportList'])->middleware('isAdmin');
 
 //CITS Welder Admitted
-Route::get('WelderAdmittedList',[AdminDataTablesController::class,'WelderAdmittedListShow'])->middleware('isAdmin');
-Route::get('WelderAdmittedForExport',[AdminDataTablesController::class,'WelderAdmittedForExportList'])->middleware('isAdmin');
+Route::post('WelderAdmittedList',[AdminDataTablesController::class,'WelderAdmittedListShow'])->middleware('isAdmin');
+Route::post('WelderAdmittedForExport',[AdminDataTablesController::class,'WelderAdmittedForExportList'])->middleware('isAdmin');
 
 //Solar Technician Admitted
-Route::get('SolarTechnicianAdmitted',[AdminDataTablesController::class,'SolarTechnicianAdmittedList'])->middleware('isAdmin');
-Route::get('SolarTechnicianAdmittedExport',[AdminDataTablesController::class,'SolarTechnicianAdmittedExportList'])->middleware('isAdmin');
+Route::post('SolarTechnicianAdmitted',[AdminDataTablesController::class,'SolarTechnicianAdmittedList'])->middleware('isAdmin');
+Route::post('SolarTechnicianAdmittedExport',[AdminDataTablesController::class,'SolarTechnicianAdmittedExportList'])->middleware('isAdmin');
 
 //IOT  Admitted
-Route::get('IotAdmittedList',[AdminDataTablesController::class,'IotAdmittedListShow'])->middleware('isAdmin');
-Route::get('iotAdmittedForExport',[AdminDataTablesController::class,'iotAdmittedForExportList'])->middleware('isAdmin');
+Route::post('IotAdmittedList',[AdminDataTablesController::class,'IotAdmittedListShow'])->middleware('isAdmin');
+Route::post('iotAdmittedForExport',[AdminDataTablesController::class,'iotAdmittedForExportList'])->middleware('isAdmin');
 
 //ElectricianPowerDistributionList  Admitted
-Route::get('ElectricianPowerDistributionList',[AdminDataTablesController::class,'ElectricianPowerDistributionListShow'])->middleware('isAdmin');
-Route::get('ElectricianPowerDisForExport',[AdminDataTablesController::class,'ElectricianPowerDisForExportList'])->middleware('isAdmin');
+Route::post('ElectricianPowerDistributionList',[AdminDataTablesController::class,'ElectricianPowerDistributionListShow'])->middleware('isAdmin');
+Route::post('ElectricianPowerDisForExport',[AdminDataTablesController::class,'ElectricianPowerDisForExportList'])->middleware('isAdmin');
 
 
 Route::post('TableData',[AdminDataTablesController::class,'showData'])->middleware('isAdmin');

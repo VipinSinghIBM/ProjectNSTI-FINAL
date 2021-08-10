@@ -244,11 +244,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </div>
         <!-- Default to the left -->
-        <center> <strong>Copyright &copy; {{ now()->year }} <a href="#arg" data-toggle="modal" data-target="#arg">&nbsp;A D I T</a>.</strong> All rights reserved.</center>
+        <center> <strong>Copyright &copy; {{ now()->year }} <a href="/team" target="_blank">&nbsp;A D I T</a>.</strong> All rights reserved.</center>
     </footer>
     </div>
 
-<!-- Modal -->
+{{-- <!-- Modal -->
 <div class="modal fade" id="arg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
@@ -270,7 +270,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
     <!-- ./wrapper -->
 </div>
     <!-- REQUIRED SCRIPTS -->

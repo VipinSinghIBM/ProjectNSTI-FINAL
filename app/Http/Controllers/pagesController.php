@@ -56,6 +56,11 @@ class pagesController extends Controller
         return view('userViews.welder');
     }
 
+
+    public function team(){
+        return view('userViews.team');
+    }
+
 //     public function register(){
 
 //         $checkAdmin=User::all();

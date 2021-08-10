@@ -23,12 +23,94 @@
                     Export Data <i class="fas fa-file-export fa-fw"></i>
                   </button>
 
+ <button
+                    v-if="search == false"
+                    type="button"
+                    class="btn btn-sm btn-primary float-right ml-3"
+                    @click="viewFilters()"
+                  >
+                    Add Filters
+                    <i class="fas fa-filter fa-fw"></i>
+                  </button>
 
                   </div>
                 </div>
               </div>
               <!-- /.card-header -->
 
+<div class="" v-if="search">
+            <div class="col">
+              <div class="float-right">
+                <button
+                  class="btn btn-outline-info btn-sm mb-2 mr-2 rounded-pill"
+                  @click="getFilteredData()"
+                >
+                  Filter <i class="fas fa-filter fa-fw"></i>
+                </button>
+
+                <button
+                  class="btn btn-info btn-sm mr-2 mb-2 rounded-pill"
+                  @click="hideFilter()"
+                >
+                  Clear <i class="far fa-times-circle fa-fw"></i>
+                </button>
+              </div>
+              <h5 class="text-center mt-2 text-muted pl-5">
+                <b>Filter Data</b>
+              </h5>
+            </div>
+            <div class="row justify-content-center pl-5 seven-cols">
+              <div class="col-md-3">
+                <div class="form-group text-center">
+                  <label for="Gender" class="font-weight-bold">Gender</label>
+                  <select class="form-control" v-model="filter.filter_gender">
+                    <option disabled value="">Select Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold"
+                    >Category</label
+                  >
+                  <select class="form-control" v-model="filter.filter_category">
+                    <option disabled value="">Select Category</option>
+                    <option value="General">General</option>
+                    <option value="OBC">OBC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold"
+                    >Date From</label
+                  >
+                  <input
+                    class="form-control"
+                    type="date"
+                    v-model="filter.date_from"
+                  />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group text-center">
+                  <label for="category" class="font-weight-bold">Date To</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    v-model="filter.date_to"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
 <!-- exportModal modal -->
                 <div
@@ -504,6 +586,15 @@ export default {
 
  exporExcelUsers: [],
 
+search: false,
+      filter: {
+        filter_gender: "",
+        filter_category: "",
+        date_from: "",
+        date_to: "",
+
+      },
+
 doc_title:'',
 
 
@@ -537,6 +628,28 @@ expandedImageTitle:'',
  },
 
   methods:{
+
+viewFilters() {
+      this.search = true;
+    },
+
+  getFilteredData() {
+      this.loadUsers();
+      this.loadUsersForExcelExport();
+    },
+
+  hideFilter() {
+      this.search = false;
+      this.filter.filter_gender = "";
+      this.filter.filter_category = "";
+      this.filter.date_from = "";
+      this.filter.date_to = "";
+
+
+      this.loadUsers();
+      this.loadUsersForExcelExport();
+    },
+
 
             clearModalData(){
 
@@ -620,14 +733,14 @@ exportStudents() {
 
     //get table data function
     loadUsers(page = 1){
-        axios.get("/ElectricianPowerDistributionList?page="+page,).then((data)=>(this.users=data.data));
+        axios.post("/ElectricianPowerDistributionList?page="+page,this.filter).then((data)=>(this.users=data.data));
     },
 
 //get table data for export  function
     loadUsersForExcelExport() {
       this.$Progress.start();
 
-      axios.get("/ElectricianPowerDisForExport").then((data) => {
+      axios.post("/ElectricianPowerDisForExport",this.filter).then((data) => {
         this.exporExcelUsers = data.data;
         bus.$emit("export-details", this.exporExcelUsers);
       });

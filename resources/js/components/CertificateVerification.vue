@@ -1105,7 +1105,6 @@ export default {
       this.filter.trade_name = "";
       this.filter.filter_gender = "";
       this.filter.filter_category = "";
-      this.filter.date_of_birth = "";
       this.filter.date_from = "";
       this.filter.date_to = "";
       this.filter.filter_examination_name = "";

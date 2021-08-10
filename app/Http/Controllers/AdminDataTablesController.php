@@ -882,22 +882,43 @@ public function rejectedListForExport(Request $request){
 }
 
         //Admitted LIST-ADIT
-        public function aditAdmittedList(){
-
+        public function aditAdmittedList(Request $request){
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','ADIT');
 
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
             return $usersAllData->paginate(7);
 
-
-
-
         }
+
  //Admitted LIST-ADIT-export
- public function aditAdmittedListExport(){
+ public function aditAdmittedListExport(Request $request){
 
 
     $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','ADIT');
+
+    if ($request->filter_gender)
+    $usersAllData->where('gender', '=', $request->filter_gender);
+
+    if ($request->filter_category)
+    $usersAllData->where('category', '=', $request->filter_category);
+
+    if ($request->date_from)
+    $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+    if ($request->date_to)
+    $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
 
     return $usersAllData->get();
 
@@ -908,144 +929,345 @@ public function rejectedListForExport(Request $request){
 
 
         //Admitted LIST-R and AC
-        public function RandAcAdmittedList(){
+        public function RandAcAdmittedList(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Mechanic RAC');
-            return $usersAllData->paginate(6);
+
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+            return $usersAllData->paginate(7);
 
         }
 
     //Admitted LIST-R and AC
-    public function RandAcAdmittedListExport(){
+    public function RandAcAdmittedListExport(Request $request){
 
 
         $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Mechanic RAC');
-        return $usersAllData->get();
 
+        if ($request->filter_gender)
+        $usersAllData->where('gender', '=', $request->filter_gender);
+
+        if ($request->filter_category)
+        $usersAllData->where('category', '=', $request->filter_category);
+
+        if ($request->date_from)
+        $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+        if ($request->date_to)
+        $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+        return $usersAllData->get();
     }
 
 
 
         //Admitted LIST-R and AC
-        public function ReadingOfDrawingAdmittedListShow(){
+        public function ReadingOfDrawingAdmittedListShow(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-RODA');
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->paginate(6);
 
         }
         //Admitted LIST-R and AC
-        public function RodaExport(){
+        public function RodaExport(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-RODA');
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->get();
 
         }
 
 
         //Admitted LIST-Electrician and wireman
-        public function ElectricianWiremanAdmittedListShow(){
+        public function ElectricianWiremanAdmittedListShow(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electrician & Wireman');
+
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->paginate(6);
 
         }
-        //Admitted LIST-Electrician and wireman
-        public function ElectricianWiremanForExportList(){
+        //Admitted LIST-Electrician and wireman-export
+        public function ElectricianWiremanForExportList(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electrician & Wireman');
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->get();
 
         }
 
         //Admitted LIST-ElectronicMechanic
-        public function ElectronicMechanicAdmittedListShow(){
+        public function ElectronicMechanicAdmittedListShow(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electronic Mechanic');
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->paginate(6);
 
         }
         //Admitted LIST-ElectronicMechanic-export
-        public function ElectronicMechanicExportList(){
+        public function ElectronicMechanicExportList(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Electronic Mechanic');
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->get();
 
         }
 
-        //Admitted LIST-Electrician and wireman
-        public function WelderAdmittedListShow(){
+        //Admitted welder
+        public function WelderAdmittedListShow(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Welder');
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->paginate(6);
 
         }
-            //Admitted LIST-Electrician and wireman-export
-            public function WelderAdmittedForExportList(){
+            //Admitted welder-export
+            public function WelderAdmittedForExportList(Request $request){
 
 
                 $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CITS-Welder');
+                if ($request->filter_gender)
+                $usersAllData->where('gender', '=', $request->filter_gender);
+
+                if ($request->filter_category)
+                $usersAllData->where('category', '=', $request->filter_category);
+
+                if ($request->date_from)
+                $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+                if ($request->date_to)
+                $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
                 return $usersAllData->get();
 
             }
 
         //Admitted LIST-Solar Technician
-        public function SolarTechnicianAdmittedList(){
+        public function SolarTechnicianAdmittedList(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Solar Technician');
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->paginate(6);
 
         }
         //Admitted LIST-Solar Technician-export
-        public function SolarTechnicianAdmittedExportList(){
+        public function SolarTechnicianAdmittedExportList(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Solar Technician');
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->get();
 
         }
 
         //Admitted LIST-IoT
-        public function IotAdmittedListShow(){
+        public function IotAdmittedListShow(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-IOT');
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->paginate(6);
 
         }
 
 
         //Admitted LIST-IoT-export
-        public function iotAdmittedForExportList(){
+        public function iotAdmittedForExportList(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-IOT');
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->get();
 
         }
 
         //Admitted LIST-Solar Technician
-        public function ElectricianPowerDistributionListShow(){
+        public function ElectricianPowerDistributionListShow(Request $request){
 
 
             $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Electrician Power Distribution');
+
+            if ($request->filter_gender)
+            $usersAllData->where('gender', '=', $request->filter_gender);
+
+            if ($request->filter_category)
+            $usersAllData->where('category', '=', $request->filter_category);
+
+            if ($request->date_from)
+            $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+            if ($request->date_to)
+            $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
             return $usersAllData->paginate(6);
 
         }
 
   //Admitted LIST-Solar Technician-export
-  public function ElectricianPowerDisForExportList(){
+  public function ElectricianPowerDisForExportList(Request $request){
 
 
     $usersAllData=User::where('AdmissionStatus', '=', 1)->where('tradeName','=','CTS-Electrician Power Distribution');
+
+    if ($request->filter_gender)
+    $usersAllData->where('gender', '=', $request->filter_gender);
+
+    if ($request->filter_category)
+    $usersAllData->where('category', '=', $request->filter_category);
+
+    if ($request->date_from)
+    $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+    if ($request->date_to)
+    $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
     return $usersAllData->get();
 
 }
