@@ -983,7 +983,7 @@ let _this=this;
             axios.post('/checkFinalValues').then(function(response){
 
                    _this.checkingFinalSubmit=response.data;
-console.log(_this.checkingFinalSubmit);
+                    console.log(_this.checkingFinalSubmit);
 
   if(_this.checkingFinalSubmit == 'ok'){
                    axios.post('/changeFormStatus').then(function(){

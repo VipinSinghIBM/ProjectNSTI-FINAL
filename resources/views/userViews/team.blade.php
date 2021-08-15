@@ -23,6 +23,8 @@
                             <ul class="list-unstyled mt-3 social-icon social mb-0">
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
+
+                                {{-- <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="far fa-file-alt"></i></a></li> --}}
                             </ul><!--end icon-->
                         </div>
                     </div>
@@ -74,7 +76,7 @@
        <div class="row">
                 <div class="col-lg-3 col-md-3 col-12  ">
                     <div class="team text-center rounded p-3 py-4">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:120px;">
+                        <img src="/assets/images/filename (7).jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="" style="width:120px;">
                         <div class="content mt-3">
                             <h4 class="title mb-0">Sanal Kp</h4>
                             <small class="text-muted">REQUIREMENT ANALYST</small>

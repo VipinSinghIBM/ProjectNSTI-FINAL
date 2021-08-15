@@ -20,6 +20,9 @@ class AdminDashboardCountController extends Controller
             $applications = User::all()->where('role', '=', 2);
             $allApplicationsCount=$applications->count();
 
+            $applications = User::all()->where('role', '=', 2)->where('formNextStatus','=',5);
+            $allApplicationFormCompletedCount=$applications->count();
+
             $male = User::all()->where('role', '=', 2)->where('gender', '=', 'Male');
             $allMaleCount=$male->count();
 
@@ -29,7 +32,7 @@ class AdminDashboardCountController extends Controller
             $others = User::all()->where('role', '=', 2)->where('gender', '=', 'Others');
             $allOthersCount=$others->count();
 
-            $certVerifyPending = User::all()->where('role', '=', 2)->where('certificateVerificationStatus', '=', null);
+            $certVerifyPending = User::all()->where('formNextStatus', '=', 5)->where('certificateVerificationStatus', '=', null);
             $allcertVerifyPendingCount=$certVerifyPending->count();
 
             $certVerified = User::all()->where('role', '=', 2)->where('certificateVerificationStatus', '=', '0');
@@ -41,7 +44,7 @@ class AdminDashboardCountController extends Controller
 
 
 
-            $feePending = User::all()->where('role', '=', 2)->where('feeVerificationStatus', '=', null);
+            $feePending = User::all()->where('formNextStatus', '=', 5)->where('feeVerificationStatus', '=', null);
             $allFeePendingCount=$feePending->count();
 
             $feeVerified = User::all()->where('role', '=', 2)->where('feeVerificationStatus', '=', '1');
@@ -50,7 +53,7 @@ class AdminDashboardCountController extends Controller
             $feeRejected = User::all()->where('role', '=', 2)->where('feeVerificationStatus', '=', '2');
             $allFeeRejectedCount=$feeRejected->count();
 
-            $AdmissionPending = User::all()->where('role', '=', 2)->where('AdmissionStatus', '=', null);
+            $AdmissionPending = User::all()->where('feeVerificationStatus', '=', 1)->where('certificateVerificationStatus', '=', 0)->where('AdmissionStatus','=',null);
             $allAdmissionPendingCount=$AdmissionPending->count();
 
             $WaitingList = User::all()->where('role', '=', 2)->where('AdmissionStatus', '=', '3');
@@ -66,6 +69,7 @@ class AdminDashboardCountController extends Controller
             return [
 
                 'totalAppli'=>$allApplicationsCount,
+                'totalAppliFormFilled'=>$allApplicationFormCompletedCount,
                 'male'=>$allMaleCount,
                 'female'=>$allFemaleCount,
                 'others'=>$allOthersCount,

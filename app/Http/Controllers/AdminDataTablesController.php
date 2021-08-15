@@ -18,10 +18,34 @@ use Illuminate\Support\Facades\DB;
 class AdminDataTablesController extends Controller
 {
 
+    public function allStudents(Request $request){
+        $usersAllData=User::with('qualification')->where('role','=','2');
+
+        if ($request->date_from)
+        $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+        if ($request->date_to)
+        $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+        return $usersAllData->paginate(7);
+    }
+
+    public function allStudentsExport(Request $request){
+        $usersAllData=User::with('qualification')->where('role','=','2');
+
+        if ($request->date_from)
+        $usersAllData->whereDate('created_at' , '>=' , $request->date_from);
+
+        if ($request->date_to)
+        $usersAllData->whereDate('created_at' , '<=' , $request->date_to);
+
+        return $usersAllData->get();
+    }
+
         public function showData(Request $request){
 
 
-            $usersAllData=User::with('qualification')->where('role','=','2');
+            $usersAllData=User::with('qualification')->where('formNextStatus','=','5');
             // ->orderBy('certificateVerificationStatus','ASC')
 
             if ($request->trade_name)
@@ -85,7 +109,7 @@ class AdminDataTablesController extends Controller
         public function showDataForExcelExport(Request $request){
 
 
-            $usersAllDataExport=User::where('role', '=', 2);
+            $usersAllDataExport=User::where('formNextStatus', '=', 5);
             // $usersAllDataExport->created_at=date('Y-m-d');
 
             if ($request->trade_name)

@@ -59,7 +59,10 @@
     </ul>
   </div>
 </div>
+<div id="userApp">
+    <password-change></password-change>
 
+</div>
 
 @elseif(Auth::user()->formNextStatus ==3)
 
@@ -78,6 +81,10 @@
   </div>
 </div>
 
+<div id="userApp">
+    <password-change></password-change>
+
+</div>
 
 @elseif(Auth::user()->formNextStatus ==4)
 
@@ -96,6 +103,12 @@
     </ul>
   </div>
 </div>
+
+<div id="userApp">
+    <password-change></password-change>
+
+</div>
+
 @elseif(Auth::user()->AdmissionStatus == 1)
 <div class="container-fluid ">
     <div class="row justify-content-center">
@@ -118,6 +131,12 @@
         </div>
     </div>
 </div>
+
+<div id="userApp">
+    <password-change></password-change>
+
+</div>
+
 @elseif(Auth::user()->formNextStatus ==5)
 
 <div class="container col-md-8">
@@ -131,7 +150,10 @@
         <p class="mb-0">Please wait for further updates     -NSTI Calicut</p>
       </div>
 </div>
+<div id="userApp">
+    <password-change></password-change>
 
+</div>
 
 @elseif(Auth::user()->certificateVerificationStatus ==5)
 
@@ -147,6 +169,10 @@
       </div>
 </div>
 
+<div id="userApp">
+    <password-change></password-change>
+
+</div>
 
 
 @elseif(Auth::user()->address == null)

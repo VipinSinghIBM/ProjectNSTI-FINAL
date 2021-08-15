@@ -1,4 +1,6 @@
+
 @extends('layouts.app')
+
 
 @section('page-content')
  <!--image slider start-->

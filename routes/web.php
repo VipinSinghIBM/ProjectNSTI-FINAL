@@ -165,6 +165,9 @@ Route::post('iotAdmittedForExport',[AdminDataTablesController::class,'iotAdmitte
 Route::post('ElectricianPowerDistributionList',[AdminDataTablesController::class,'ElectricianPowerDistributionListShow'])->middleware('isAdmin');
 Route::post('ElectricianPowerDisForExport',[AdminDataTablesController::class,'ElectricianPowerDisForExportList'])->middleware('isAdmin');
 
+//all-studentsList
+Route::post('GetLoadAllUsers',[AdminDataTablesController::class,'allStudents'])->middleware('isAdmin');
+Route::post('GetAllDataForExport',[AdminDataTablesController::class,'allStudentsExport'])->middleware('isAdmin');
 
 Route::post('TableData',[AdminDataTablesController::class,'showData'])->middleware('isAdmin');
 Route::post('TableDataForExcelExport',[AdminDataTablesController::class,'showDataForExcelExport'])->middleware('isAdmin');

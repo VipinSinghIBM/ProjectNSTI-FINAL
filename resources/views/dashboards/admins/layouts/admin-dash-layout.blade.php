@@ -134,6 +134,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </router-link>
 
+                        <li class="nav-item" >
+                            <router-link to="/All-Applications" class="nav-link">
+                                <i class="nav-icon fas fa-users fa-fw"></i>
+                                <p>
+                                    All Registered Students
+
+                                </p>
+                            </router-link>
+                        </li>
+
                     <li class="nav-item" >
                         <router-link to="/Certificate-Verification" class="nav-link">
                             <i class="nav-icon fas fa-check"></i>
@@ -156,7 +166,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <router-link to="/Admission-Pending" class="nav-link">
-                            <i class="nav-icon fas fa-check-circle"></i>
+                            <i class="nav-icon fas fa-hourglass-half"></i>
                             <p>
                                 Admission Pending
 
@@ -236,7 +246,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     </div>
     <!-- /.control-sidebar -->
-    <div id="userApp"></div><!--09-08-2021  commented for aviod userApp is not found console error-->
+    {{-- <div id="userApp"></div><!--09-08-2021  commented for aviod userApp is not found console error--> --}}
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- To the right -->
@@ -244,7 +254,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </div>
         <!-- Default to the left -->
-        <center> <strong>Copyright &copy; {{ now()->year }} <a href="/team" target="_blank">&nbsp;A D I T</a>.</strong> All rights reserved.</center>
+        <center> <strong>Copyright &copy; {{ now()->year }} <a href="/team" target="_blank">&nbsp; C R E A T O R S &nbsp;</a>.</strong> All rights reserved @ A D I T</center>
     </footer>
     </div>
 

@@ -3,15 +3,15 @@
 
 
 
-<div class="row pt-5">
+<div class="row pt-2">
 
           <div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-secondary">
               <div class="inner">
                 <h3>{{ totalCountsData.totalAppli }}</h3>
 
-                <p>Total Applications</p>
+                <p>Total Registered Students</p>
               </div>
        <div class="icon">
                 <i class="fas fa-users"></i>
@@ -23,9 +23,10 @@
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+
+<div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-secondary">
+            <div class="small-box bg-info">
               <div class="inner row ml-4">
                     <div class="col-lg-4 col-md-4 col-sm-4 ">
                                     <h3>{{ totalCountsData.male }}</h3>
@@ -56,6 +57,28 @@
             </div>
           </div>
           <!-- ./col -->
+
+  <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-secondary">
+              <div class="inner">
+                <h3>{{ totalCountsData.totalAppliFormFilled }}</h3>
+
+                <p>Total Applications Recieved</p>
+              </div>
+       <div class="icon">
+                <i class="fas fa-users"></i>
+              </div>
+
+             <router-link to="/Certificate-Verification" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </router-link>
+            </div>
+          </div>
+          <!-- ./col -->
+
+
+
           <div class="col-lg-3 col-6">
             <!-- small card -->
             <div class="small-box bg-warning">

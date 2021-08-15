@@ -71,6 +71,7 @@ const routes = [
     { path: '/Adit-Admitted', component: require('./components/AditAdmitted.vue').default },
     { path: '/Cits-Admitted', component: require('./components/CitsAdmitted.vue').default },
     { path: '/Cts-Admitted', component: require('./components/CtsAdmitted.vue').default },
+    { path: '/All-Applications', component: require('./components/AllApplications.vue').default },
 
 
   ]
@@ -139,6 +140,8 @@ Vue.component('documents-reupload', require('./components/DocumentsReUpload.vue'
 Vue.component('admin-dash', require('./components/AdminDash.vue').default);
 
 Vue.component('students-export', require('./components/StudentsExport.vue').default);
+
+Vue.component('all-students-export', require('./components/AllStudentsExport.vue').default);
 
 Vue.component('our-team', require('./components/OurTeam.vue').default);
 

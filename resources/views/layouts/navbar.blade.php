@@ -16,29 +16,30 @@
     <div class="navbar-collapse justify-content-md-center collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="./">HOME</a>
+                <a class="nav-link" href="/">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./about">ABOUT US</a>
+                <a class="nav-link" href="/about">ABOUT US</a>
             </li>
             <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   COURSES OFFERED
                 </a>
-                <div class="dropdown-menu dropdwon-home" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="./advanceDiploma">ADVANCED DIPLOMA</a>
-                  <a class="dropdown-item" href="./cits">CRAFTS INSTRUCTOR TRAINIG SCHEME (CITS)</a>
-                  <a class="dropdown-item" href="./ctsnewagecourse">CTS-NEW AGE COURSES</a>
 
+                <div class="dropdown-menu dropdwon-home" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/advanceDiploma">ADVANCED DIPLOMA</a>
+                  <a class="dropdown-item" href="/cits">CRAFTS INSTRUCTOR TRAINIG SCHEME (CITS)</a>
+                  <a class="dropdown-item" href="/ctsnewagecourse">CTS-NEW AGE COURSES</a>
+                </div>
               </li>
             <li class="nav-item">
-                <a class="nav-link" href="./register">REGISTER</a>
+                <a class="nav-link" href="/register">REGISTER</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./login">LOGIN</a>
+                <a class="nav-link" href="/login">LOGIN</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./contact">CONTACT US</a>
+                <a class="nav-link" href="/contact">CONTACT US</a>
             </li>
 
         </ul>

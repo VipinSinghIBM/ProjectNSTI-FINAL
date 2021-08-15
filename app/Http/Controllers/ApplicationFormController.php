@@ -323,8 +323,7 @@ return 'success';
         }
 
         public function checkValuesFinalSubmit(){
-            $check=documents::where([['doc_title','=','Aadhar Back Side'],['doc_title','=','Aadhar Front Side'],['user_id','=',Auth::user()->id]
-])->get();
+            $check=documents::where('user_id','=',Auth::user()->id)->whereIn('doc_title',['Aadhar Back Side','Aadhar Front Side','Candidate Photo'])->first();
 
             if($check){
 
