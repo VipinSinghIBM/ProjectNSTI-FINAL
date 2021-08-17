@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-
+    <div class="view " style="background-image: url('/assets/images/bg-team.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
     <div class="container">
-<h3 class="text-center mt-5 mb-5">Meet Our Creative Team</h3>
+        <a href="/"><i class="fas fa-home pt-5"></i></a>
+<h5 class="text-center  mb-3 text-muted">Meet Our Creative Team</h5>
+<h3 class="text-center mb-5 text-muted"><strong>C <span class="text-info"><em>R</em></span> E A T O <span class="text-info"><em>R</em></span> S</strong></h3>
     <!-- Meet Our Team -->
          <div class="row">
                 <div class="col-lg-3 col-md-3 col-12  ">
@@ -21,8 +23,8 @@
                             <h4 class="title mb-0">Anurag Ck</h4>
                             <small class="text-muted">UI DESIGN & WEB DEVELOPER</small>
                             <ul class="list-unstyled mt-3 social-icon social mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://github.com/Anuragck" target="_blank" class="rounded"><i class="fab fa-github" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.linkedin.com/in/anurag-ck/"  target="_blank" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
 
                                 {{-- <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="far fa-file-alt"></i></a></li> --}}
                             </ul><!--end icon-->
@@ -37,8 +39,8 @@
                             <h4 class="title mb-0">Adwaith Kannan</h4>
                             <small class="text-muted">UI DESIGN & WEB DEVELOPER</small>
                              <ul class="list-unstyled mt-3 social-icon social mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://github.com/AdwaithKannan" target="_blank" class="rounded"><i class="fab fa-github" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.linkedin.com/in/adwaith-kannan-03022001/" target="_blank" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
                             </ul><!--end icon-->
                         </div>
                     </div>
@@ -51,8 +53,8 @@
                             <h4 class="title mb-0">Manu Dev</h4>
                             <small class="text-muted">UI DESIGN & WEB DEVELOPER</small>
                              <ul class="list-unstyled mt-3 social-icon social mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
+                                <li class="list-inline-item"><a href="javascript:void(0)" target="_blank" class="rounded"><i class="fab fa-github" ></i></a></li>
+                                <li class="list-inline-item"><a href="javascript:void(0)" target="_blank" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
                             </ul><!--end icon-->
                         </div>
                     </div>
@@ -65,8 +67,8 @@
                             <h4 class="title mb-0">Akhil Das Kp</h4>
                             <small class="text-muted">REQUIREMENT ANALYST</small>
                              <ul class="list-unstyled mt-3 social-icon social mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://github.com/a4akhildas" target="_blank" class="rounded"><i class="fab fa-github" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.linkedin.com/in/a4akhildas/" target="_blank" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
                             </ul><!--end icon-->
                         </div>
                     </div>
@@ -81,8 +83,8 @@
                             <h4 class="title mb-0">Sanal Kp</h4>
                             <small class="text-muted">REQUIREMENT ANALYST</small>
                              <ul class="list-unstyled mt-3 social-icon social mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://github.com/Sanal13" target="_blank" class="rounded"><i class="fab fa-github" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.linkedin.com/in/sanal-keloth/" target="_blank" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
                             </ul><!--end icon-->
                         </div>
                     </div>
@@ -95,8 +97,8 @@
                             <h4 class="title mb-0">Vipin Singh</h4>
                             <small class="text-muted">UI DESIGN & WEB DEVELOPER</small>
                               <ul class="list-unstyled mt-3 social-icon social mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
+                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" target="_blank" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.linkedin.com/in/vipin-singh-4149961a3/" target="_blank" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
                             </ul><!--end icon-->
                         </div>
                     </div>
@@ -109,8 +111,8 @@
                             <h4 class="title mb-0">Pravitha Cp</h4>
                             <small class="text-muted">QA AND TESTING</small>
                              <ul class="list-unstyled mt-3 social-icon social mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://github.com/pravithacp" target="_blank" class="rounded"><i class="fab fa-github" ></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.linkedin.com/in/pravitha-cp-34a9101a5/" target="_blank" class="rounded"><i class="fab fa-linkedin-in" ></i></a></li>
                             </ul><!--end icon-->
                         </div>
                     </div>
@@ -123,8 +125,8 @@
                             <h4 class="title mb-0">Anumol M</h4>
                             <small class="text-muted">QA AND TESTING</small>
                             <ul class="list-unstyled mt-3 social-icon social mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="fab fa-github" ></i></a></li>
-                                <li class="list-inline-item meetTeam"><a href="javascript:void(0)" class="rounded"><i class="fab fa-linkedin-in " ></i></a></li>
+                                <li class="list-inline-item"><a href="https://github.com/anumol11" target="_blank" class="rounded"><i class="fab fa-github" ></i></a></li>
+                                <li class="list-inline-item meetTeam"><a href="https://www.linkedin.com/in/anumol-m-b587941a5/" target="_blank" class="rounded"><i class="fab fa-linkedin-in " ></i></a></li>
                             </ul><!--end icon-->
                         </div>
                     </div>
@@ -139,7 +141,7 @@
                 </div>
                 <!-- Copyright -->
               </footer>
-    </div>
+    </div></div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

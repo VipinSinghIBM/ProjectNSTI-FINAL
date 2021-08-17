@@ -15,8 +15,8 @@
                         @csrf
 
                         <h2 class="text-center mb-4 text-muted ">Registration</h2>
-                        <div class="form-icon">
-                            <span><i class="fas fa-user"></i></span>
+                        <div class="form-icon pt-4">
+                            <span><i class="fas fa-user "></i></span>
                         </div>
 
                         {{--username  --}}

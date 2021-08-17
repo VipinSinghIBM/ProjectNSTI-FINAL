@@ -41,9 +41,9 @@
 
         <div class="col-md-4 col-sm-6 col-xs-12">
           <ul class="social-icons">
-            <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
-            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a class="facebook pt-2" href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a class="youtube pt-2" href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a class="twitter pt-2" href="#"><i class="fab fa-twitter"></i></a></li>
 
           </ul>
         </div>

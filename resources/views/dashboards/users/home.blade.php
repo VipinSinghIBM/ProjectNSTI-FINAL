@@ -142,7 +142,7 @@
 <div class="container col-md-8">
     <div class="alert alert-success" role="alert">
         <h4 class="alert-heading font-weight-bold text-center">Well done! <i class="far fa-check-circle fa-lg"></i></h4>
-        <p class="mt-5 text-justify">You are successfully submitted the application form , we will verify the details and inoform you the updations regarding your admission..</p>
+        <p class="mt-5 text-justify">You are successfully submitted the application form , we will verify the details and inform you the updations regarding your admission..</p>
 <div class="text-center">
 
 </div>

@@ -7,7 +7,7 @@
             @csrf
             <h2 class="text-center mb-5 text-muted ">Candidate Login</h2>
 
-            <div class="form-icon">
+            <div class="form-icon pt-4">
                 <span><i class="fas fa-user"></i></span>
             </div>
 
