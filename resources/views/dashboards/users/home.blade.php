@@ -18,7 +18,7 @@
 </div>
 
 
-@elseif (Auth::user()->certRemarks)
+@elseif (Auth::user()->certRemarks && Auth::user()->certificateVerificationStatus == 1)
 
 <div class="container">
 
@@ -44,6 +44,33 @@
 
 
 </div>
+
+@elseif (Auth::user()->certificateVerificationStatus == 2)
+
+<div class="container">
+
+
+    <div class="alert alert-danger alert-dismissible fade show">
+        <h5 class="alert-heading font-weight-bold "><i class="fas fa-exclamation-triangle"></i> Your Documents has been Rejected</h5>
+<p class="font-weight-bold font-italic mt-3">{{ Auth::user()->certRemarks }}</p>
+        <p>Your Documents Rejected due to the above reason. </p>
+        <hr>
+        {{-- <p class="mb-0">Click here to Upload the Documents<a href="" style="text-decoration:none; color:#8D5024;"> <i class="fas fa-upload "></i> </a></p> --}}
+        {{-- <button type="button" class="close" data-dismiss="alert">&times;</button> --}}
+    </div>
+
+    {{-- <div id="userApp">
+        <documents-reupload></documents-reupload>
+    </div> --}}
+
+</div>
+<div id="userApp">
+
+    <password-change></password-change>
+
+
+</div>
+
 @elseif(Auth::user()->formNextStatus ==2)
 
 <div class="container col-md-6">
