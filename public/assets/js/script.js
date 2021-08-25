@@ -22,9 +22,15 @@
                 jQuery(this).remove();
             });
     }
-    
+
 })
+
 (jQuery);
+
+
+
+
+
 
 
 

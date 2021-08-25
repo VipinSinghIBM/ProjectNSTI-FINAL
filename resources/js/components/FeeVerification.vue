@@ -249,7 +249,13 @@
                     ></span>
                   </td>
 
-                  <td v-if="user.certificateVerificationStatus >= 2">
+ <td v-if="user.certificateVerificationStatus == 2">
+                    <span class="badge badge-dark"
+                      >Re-Uploaded <i class="fas fa-redo fa-fw"></i
+                    ></span>
+                  </td>
+
+                  <td v-if="user.certificateVerificationStatus > 2">
                     <span class="badge badge-danger"
                       >Rejected <i class="far fa-times-circle fa-fw"></i
                     ></span>

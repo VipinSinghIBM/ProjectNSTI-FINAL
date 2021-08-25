@@ -342,7 +342,7 @@ return 'success';
 
             //certificate verification status change after re-upload-documents
             $certStatusChange=User::where('id','=',Auth::user()->id)->first();
-            $certStatusChange->certificateVerificationStatus=5;
+            $certStatusChange->certificateVerificationStatus=2;
             $certStatusChange->save();
         }
 

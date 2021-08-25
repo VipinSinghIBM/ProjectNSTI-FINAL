@@ -251,11 +251,11 @@ class AdminDataTablesController extends Controller
             $user_data=User::find($request->id);
             if($user_data){
 
-                if($user_data->certificateVerificationStatus>=2){
+                if($user_data->certificateVerificationStatus > 2){
                                     return 'alredayRejected';
                                 }
 
-                if($user_data->certificateVerificationStatus < 2){
+                if($user_data->certificateVerificationStatus <= 2){
                     $user_data->certificateVerificationStatus++;
                         $user_data->certRemarks=$request->Remarks;
                         $user_data->save();
